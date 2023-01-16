@@ -1,0 +1,469 @@
+[Root]
+Most Recent Package=FMA PMS Setup
+
+
+[Package|Dep File 1|Root]
+SubWizProgID=PDWizard.DepPkgSubWiz
+BuildFolder=D:\Documents and Settings\ehsan\My Documents\PayPhone
+
+[Package|Dep File 1|Configure DAO ISAMs]
+Applicable=Yes
+Xbase=Yes
+Excel=Yes
+Exchange=Yes
+Text=Yes
+Jet 2.x=Yes
+Lotus=Yes
+Paradox=Yes
+
+[Package|Dep File 1|Configure DAO ODBC]
+JetWorkspace=Yes
+ODBCDirect=Yes
+
+[Package|Dep File 1|Files Found]
+
+[Package|Dep File 1|Files Released]
+
+[Package|Dep File 1|Missing Dependency Information]
+D:\WINDOWS\system32\MSEXCH35.DLL=
+D:\Program Files\Common Files\Microsoft Shared\Web Components\10\OWC10.DLL=
+D:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.dll=
+D:\Documents and Settings\ehsan\My Documents\PayPhone\Modules\PMS\SynDBUtil.dll=
+D:\WINDOWS\system32\msxml3.dll=
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\arpro2.dll=
+D:\WINDOWS\system32\actskn43.ocx=
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\ardespro2.dll=
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\ARVIEW2.OCX=
+D:\WINDOWS\system32\MSSTDFMT.DLL=
+D:\Program Files\Common Files\System\ado\msado25.tlb=
+D:\WINDOWS\system32\shlwapi.dll=
+
+[Package|Dep File 1|Out-of-Date Dependency Information]
+D:\WINDOWS\system32\MSRDO20.DLL=
+D:\WINDOWS\system32\MSCOMCTL.OCX=
+D:\WINDOWS\system32\scrrun.dll=
+
+[Package|Dep File 1|Files Added]
+
+[Package|Dep File 1|Files Removed]
+
+[Package|Dep File 1|Files In Project]
+D:\Documents and Settings\ehsan\My Documents\PayPhone\PMS.exe=Yes
+D:\WINDOWS\system32\msvbvm60.dll=Yes
+D:\WINDOWS\system32\oleaut32.dll=Yes
+D:\WINDOWS\system32\olepro32.dll=Yes
+D:\WINDOWS\system32\asycfilt.dll=Yes
+D:\WINDOWS\system32\stdole2.tlb=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+D:\WINDOWS\system32\shlwapi.dll=Yes
+D:\Program Files\Common Files\DESIGNER\MSDERUN.DLL=Yes
+D:\Program Files\Common Files\System\ado\msado15.dll=Yes
+D:\Program Files\Common Files\System\ado\msado25.tlb=Yes
+D:\WINDOWS\system32\MSBIND.DLL=Yes
+D:\WINDOWS\system32\MSSTDFMT.DLL=Yes
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\ARVIEW2.OCX=Yes
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\ardespro2.dll=Yes
+D:\WINDOWS\system32\actskn43.ocx=Yes
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\arpro2.dll=Yes
+D:\WINDOWS\system32\msxml3.dll=Yes
+D:\Program Files\Common Files\Microsoft Shared\DAO\DAO350.DLL=Yes
+D:\WINDOWS\system32\MSJET35.DLL=Yes
+D:\WINDOWS\system32\MSJTER35.DLL=Yes
+D:\WINDOWS\system32\MSJINT35.DLL=Yes
+D:\WINDOWS\system32\vbajet32.dll=Yes
+D:\WINDOWS\system32\expsrv.dll=Yes
+D:\WINDOWS\system32\MSRD2X35.DLL=Yes
+D:\WINDOWS\system32\MSREPL35.DLL=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=Yes
+D:\WINDOWS\system32\VB5DB.DLL=Yes
+D:\Documents and Settings\ehsan\My Documents\PayPhone\Modules\PMS\SynDBUtil.dll=Yes
+D:\WINDOWS\system32\scrrun.dll=Yes
+D:\WINDOWS\system32\msvcrt.dll=Yes
+D:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.dll=Yes
+D:\WINDOWS\system32\MSDATGRD.OCX=Yes
+D:\WINDOWS\system32\MSDATLST.OCX=Yes
+D:\WINDOWS\system32\TABCTL32.OCX=Yes
+D:\WINDOWS\system32\COMDLG32.OCX=Yes
+D:\WINDOWS\system32\MSMASK32.OCX=Yes
+D:\WINDOWS\system32\MSCOMM32.OCX=Yes
+D:\WINDOWS\system32\MSCOMCT2.OCX=Yes
+D:\WINDOWS\system32\MSCOMCTL.OCX=Yes
+D:\Program Files\Common Files\Microsoft Shared\Web Components\10\OWC10.DLL=Yes
+D:\WINDOWS\system32\MSEXCL35.DLL=Yes
+D:\WINDOWS\system32\MSEXCH35.DLL=Yes
+D:\WINDOWS\system32\MSLTUS35.DLL=Yes
+D:\WINDOWS\system32\MSRDO20.DLL=Yes
+D:\WINDOWS\system32\RDOCURS.DLL=Yes
+D:\WINDOWS\system32\odbc32.dll=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+D:\WINDOWS\system32\MSPDOX35.DLL=Yes
+D:\WINDOWS\system32\MSTEXT35.DLL=Yes
+D:\WINDOWS\system32\MSXBSE35.DLL=Yes
+
+[Package|Dep File 1|Configure Registry Files]
+Applicable=
+
+[Package|Dep File 1|Configure Remote Servers]
+Applicable=
+
+[Package|Dep File 1|Install Locations]
+D:\Documents and Settings\ehsan\My Documents\PayPhone\PMS.exe=$(AppPath)
+D:\WINDOWS\system32\msvbvm60.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\oleaut32.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\olepro32.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\asycfilt.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\stdole2.tlb=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\shlwapi.dll=$(WinSysPath)
+D:\Program Files\Common Files\DESIGNER\MSDERUN.DLL=$(CommonFiles)\designer
+D:\Program Files\Common Files\System\ado\msado15.dll=$(CommonFilesSys)\ADO
+D:\Program Files\Common Files\System\ado\msado25.tlb=$(WinSysPath)
+D:\WINDOWS\system32\MSBIND.DLL=$(WinSysPath)
+D:\WINDOWS\system32\MSSTDFMT.DLL=$(WinSysPath)
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\ARVIEW2.OCX=$(WinSysPath)
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\ardespro2.dll=$(WinSysPath)
+D:\WINDOWS\system32\actskn43.ocx=$(WinSysPath)
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\arpro2.dll=$(WinSysPath)
+D:\WINDOWS\system32\msxml3.dll=$(WinSysPath)
+D:\Program Files\Common Files\Microsoft Shared\DAO\DAO350.DLL=$(MSDAOPath)
+D:\WINDOWS\system32\MSJET35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSJTER35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSJINT35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\vbajet32.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\expsrv.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSRD2X35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSREPL35.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\VB5DB.DLL=$(WinSysPath)
+D:\Documents and Settings\ehsan\My Documents\PayPhone\Modules\PMS\SynDBUtil.dll=$(WinSysPath)
+D:\WINDOWS\system32\scrrun.dll=$(WinSysPath)
+D:\WINDOWS\system32\msvcrt.dll=$(WinSysPathSysFile)
+D:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.dll=$(AppPath)
+D:\WINDOWS\system32\MSDATGRD.OCX=$(WinSysPath)
+D:\WINDOWS\system32\MSDATLST.OCX=$(WinSysPath)
+D:\WINDOWS\system32\TABCTL32.OCX=$(WinSysPath)
+D:\WINDOWS\system32\COMDLG32.OCX=$(WinSysPath)
+D:\WINDOWS\system32\MSMASK32.OCX=$(WinSysPath)
+D:\WINDOWS\system32\MSCOMM32.OCX=$(WinSysPath)
+D:\WINDOWS\system32\MSCOMCT2.OCX=$(WinSysPath)
+D:\WINDOWS\system32\MSCOMCTL.OCX=$(WinSysPath)
+D:\Program Files\Common Files\Microsoft Shared\Web Components\10\OWC10.DLL=$(WinSysPath)
+D:\WINDOWS\system32\MSEXCL35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSEXCH35.DLL=$(WinSysPath)
+D:\WINDOWS\system32\MSLTUS35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSRDO20.DLL=$(WinSysPath)
+D:\WINDOWS\system32\RDOCURS.DLL=$(WinSysPath)
+D:\WINDOWS\system32\odbc32.dll=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+D:\WINDOWS\system32\MSPDOX35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSTEXT35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSXBSE35.DLL=$(WinSysPathSysFile)
+
+[Package|Dep File 1|Configure Shared Files]
+Applicable=
+
+[Package|Dep File 1|DepFile]
+DepCabFile=PMS.CAB
+DepCabRun=PMS.INF
+
+[Package|Dep File 1|Package]
+PackageFolder=D:\Documents and Settings\ehsan\My Documents\PayPhone
+ProjectFolder=D:\Documents and Settings\ehsan\My Documents\PayPhone
+ServerSideCab=
+File1=D:\Documents and Settings\ehsan\My Documents\PayPhone\PMS.DEP
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+
+[Package|FMA PMS Setup|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=c:\Documents and Settings\Fara Modje Asia\My Documents\pms_setup_ver6
+
+[Package|FMA PMS Setup|Configure DAO ISAMs]
+Applicable=Yes
+Xbase=Yes
+Excel=Yes
+Exchange=Yes
+Text=Yes
+Jet 2.x=Yes
+Lotus=Yes
+Paradox=Yes
+
+[Package|FMA PMS Setup|Configure DAO ODBC]
+JetWorkspace=Yes
+ODBCDirect=Yes
+
+[Package|FMA PMS Setup|Files Found]
+
+[Package|FMA PMS Setup|Files Released]
+
+[Package|FMA PMS Setup|Missing Dependency Information]
+D:\WINDOWS\system32\MSEXCH35.DLL=
+D:\Program Files\Common Files\Microsoft Shared\Web Components\10\OWC10.DLL=
+D:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.dll=
+D:\Documents and Settings\ehsan\My Documents\PayPhone\Modules\PMS\SynDBUtil.dll=
+D:\WINDOWS\system32\msxml3.dll=
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\arpro2.dll=
+D:\WINDOWS\system32\actskn43.ocx=
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\ardespro2.dll=
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\ARVIEW2.OCX=
+D:\WINDOWS\system32\MSSTDFMT.DLL=
+D:\Program Files\Common Files\System\ado\msado25.tlb=
+D:\WINDOWS\system32\shlwapi.dll=
+D:\WINDOWS\system32\SynDBUtil.dll=
+D:\Documents and Settings\ehsan\My Documents\payphone_project\software\pms\PayPhone\Modules\PMS\SynDBUtil.dll=
+D:\WINDOWS\system32\OWC10.DLL=
+D:\WINDOWS\system32\arpro2.dll=
+D:\WINDOWS\system32\ardespro2.dll=
+D:\WINDOWS\system32\ARVIEW2.OCX=
+C:\WINDOWS\system32\MSEXCH35.DLL=
+C:\WINDOWS\system32\OWC10.DLL=
+C:\WINDOWS\system32\SynDBUtil.dll=
+C:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.dll=
+C:\WINDOWS\system32\msxml3.dll=
+C:\WINDOWS\system32\arpro2.dll=
+C:\WINDOWS\system32\actskn43.ocx=
+C:\WINDOWS\system32\ardespro2.dll=
+C:\WINDOWS\system32\ARVIEW2.OCX=
+C:\WINDOWS\system32\MSSTDFMT.DLL=
+C:\Program Files\Common Files\System\ado\msado25.tlb=
+C:\WINDOWS\system32\shlwapi.dll=
+
+[Package|FMA PMS Setup|Out-of-Date Dependency Information]
+D:\WINDOWS\system32\MSRDO20.DLL=
+D:\WINDOWS\system32\MSCOMCTL.OCX=
+D:\WINDOWS\system32\scrrun.dll=
+D:\WINDOWS\system32\MSSTDFMT.DLL=
+D:\WINDOWS\system32\Comdlg32.ocx=
+C:\WINDOWS\system32\MSRDO20.DLL=
+C:\WINDOWS\system32\MSCOMCTL.OCX=
+C:\WINDOWS\system32\scrrun.dll=
+
+[Package|FMA PMS Setup|Files Added]
+
+[Package|FMA PMS Setup|Files Removed]
+
+[Package|FMA PMS Setup|Files In Project]
+C:\Documents and Settings\Fara Modje Asia\My Documents\PayPhone_ver_6\PMS.exe=Yes
+C:\WINDOWS\system32\msvbvm60.dll=Yes
+C:\WINDOWS\system32\oleaut32.dll=Yes
+C:\WINDOWS\system32\olepro32.dll=Yes
+C:\WINDOWS\system32\asycfilt.dll=Yes
+C:\WINDOWS\system32\stdole2.tlb=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINDOWS\system32\shlwapi.dll=Yes
+C:\Program Files\Common Files\DESIGNER\MSDERUN.DLL=Yes
+C:\Program Files\Common Files\System\ado\msado25.tlb=Yes
+C:\WINDOWS\system32\MSBIND.DLL=Yes
+C:\WINDOWS\system32\MSSTDFMT.DLL=Yes
+C:\WINDOWS\system32\ARVIEW2.OCX=Yes
+C:\WINDOWS\system32\ardespro2.dll=Yes
+C:\WINDOWS\system32\actskn43.ocx=Yes
+C:\WINDOWS\system32\arpro2.dll=Yes
+C:\WINDOWS\system32\msxml3.dll=Yes
+C:\Program Files\Common Files\Microsoft Shared\DAO\DAO350.DLL=Yes
+C:\WINDOWS\system32\MSJET35.DLL=Yes
+C:\WINDOWS\system32\MSJTER35.DLL=Yes
+C:\WINDOWS\system32\MSJINT35.DLL=Yes
+C:\WINDOWS\system32\vbajet32.dll=Yes
+C:\WINDOWS\system32\expsrv.dll=Yes
+C:\WINDOWS\system32\MSRD2X35.DLL=Yes
+C:\WINDOWS\system32\MSREPL35.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=Yes
+C:\WINDOWS\system32\VB5DB.DLL=Yes
+C:\WINDOWS\system32\scrrun.dll=Yes
+C:\WINDOWS\system32\msvcrt.dll=Yes
+C:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.dll=Yes
+C:\WINDOWS\system32\MSDBRPTR.DLL=Yes
+C:\WINDOWS\system32\SynDBUtil.dll=Yes
+C:\WINDOWS\system32\MSDATGRD.OCX=Yes
+C:\WINDOWS\system32\MSDATLST.OCX=Yes
+C:\WINDOWS\system32\TABCTL32.OCX=Yes
+C:\WINDOWS\system32\COMDLG32.OCX=Yes
+C:\WINDOWS\system32\MSMASK32.OCX=Yes
+C:\WINDOWS\system32\MSCOMCT2.OCX=Yes
+C:\WINDOWS\system32\MSCOMCTL.OCX=Yes
+C:\WINDOWS\system32\OWC10.DLL=Yes
+C:\WINDOWS\system32\MSCOMM32.OCX=Yes
+C:\WINDOWS\system32\MSXBSE35.DLL=Yes
+C:\WINDOWS\system32\MSEXCL35.DLL=Yes
+C:\WINDOWS\system32\MSEXCH35.DLL=Yes
+C:\WINDOWS\system32\MSTEXT35.DLL=Yes
+C:\WINDOWS\system32\MSLTUS35.DLL=Yes
+C:\WINDOWS\system32\MSPDOX35.DLL=Yes
+C:\WINDOWS\system32\MSRDO20.DLL=Yes
+C:\WINDOWS\system32\RDOCURS.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINDOWS\system32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+
+[Package|FMA PMS Setup|Configure Registry Files]
+Applicable=No
+
+[Package|FMA PMS Setup|Configure Remote Servers]
+Applicable=No
+
+[Package|FMA PMS Setup|Install Locations]
+D:\Documents and Settings\ehsan\My Documents\PayPhone\PMS.exe=$(AppPath)
+D:\WINDOWS\system32\msvbvm60.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\oleaut32.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\olepro32.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\asycfilt.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\stdole2.tlb=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\shlwapi.dll=$(WinSysPath)
+D:\Program Files\Common Files\DESIGNER\MSDERUN.DLL=$(CommonFiles)\designer
+D:\Program Files\Common Files\System\ado\msado15.dll=$(CommonFilesSys)\ADO
+D:\Program Files\Common Files\System\ado\msado25.tlb=$(WinSysPath)
+D:\WINDOWS\system32\MSBIND.DLL=$(WinSysPath)
+D:\WINDOWS\system32\MSSTDFMT.DLL=$(WinSysPath)
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\ARVIEW2.OCX=$(WinSysPath)
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\ardespro2.dll=$(WinSysPath)
+D:\WINDOWS\system32\actskn43.ocx=$(WinSysPath)
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\arpro2.dll=$(WinSysPath)
+D:\WINDOWS\system32\msxml3.dll=$(WinSysPath)
+D:\Program Files\Common Files\Microsoft Shared\DAO\DAO350.DLL=$(MSDAOPath)
+D:\WINDOWS\system32\MSJET35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSJTER35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSJINT35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\vbajet32.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\expsrv.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSRD2X35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSREPL35.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\VB5DB.DLL=$(WinSysPath)
+D:\Documents and Settings\ehsan\My Documents\PayPhone\Modules\PMS\SynDBUtil.dll=$(WinSysPath)
+D:\WINDOWS\system32\scrrun.dll=$(WinSysPath)
+D:\WINDOWS\system32\msvcrt.dll=$(WinSysPathSysFile)
+D:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.dll=$(AppPath)
+D:\WINDOWS\system32\MSDATGRD.OCX=$(WinSysPath)
+D:\WINDOWS\system32\MSDATLST.OCX=$(WinSysPath)
+D:\WINDOWS\system32\TABCTL32.OCX=$(WinSysPath)
+D:\WINDOWS\system32\COMDLG32.OCX=$(WinSysPath)
+D:\WINDOWS\system32\MSMASK32.OCX=$(WinSysPath)
+D:\WINDOWS\system32\MSCOMM32.OCX=$(WinSysPath)
+D:\WINDOWS\system32\MSCOMCT2.OCX=$(WinSysPath)
+D:\WINDOWS\system32\MSCOMCTL.OCX=$(WinSysPath)
+D:\Program Files\Common Files\Microsoft Shared\Web Components\10\OWC10.DLL=$(WinSysPath)
+D:\WINDOWS\system32\MSEXCL35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSEXCH35.DLL=$(WinSysPath)
+D:\WINDOWS\system32\MSLTUS35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSRDO20.DLL=$(WinSysPath)
+D:\WINDOWS\system32\RDOCURS.DLL=$(WinSysPath)
+D:\WINDOWS\system32\odbc32.dll=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+D:\WINDOWS\system32\MSPDOX35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSTEXT35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSXBSE35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSDBRPTR.DLL=$(WinSysPath)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+D:\WINDOWS\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+D:\Documents and Settings\PMS\My Documents\PayPhone\PMS.exe=$(AppPath)
+D:\WINDOWS\system32\SynDBUtil.dll=$(WinSysPath)
+D:\Documents and Settings\ehsan\My Documents\payphone_project\software\pms\PayPhone\PMS.exe=$(AppPath)
+D:\Documents and Settings\ehsan\My Documents\payphone_project\software\pms\PayPhone\Modules\PMS\SynDBUtil.dll=$(WinSysPath)
+D:\Documents and Settings\MAZANDARAN\My Documents\PayPhone_ver5\PMS.exe=$(AppPath)
+D:\WINDOWS\system32\ARVIEW2.OCX=$(WinSysPath)
+D:\WINDOWS\system32\ardespro2.dll=$(WinSysPath)
+D:\WINDOWS\system32\arpro2.dll=$(WinSysPath)
+D:\WINDOWS\system32\OWC10.DLL=$(WinSysPath)
+C:\Documents and Settings\Fara Modje Asia\My Documents\PayPhone_ver_6\PMS.exe=$(AppPath)
+C:\WINDOWS\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\oleaut32.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\olepro32.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\asycfilt.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\stdole2.tlb=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\shlwapi.dll=$(WinSysPath)
+C:\Program Files\Common Files\DESIGNER\MSDERUN.DLL=$(CommonFiles)\designer
+C:\Program Files\Common Files\System\ado\msado25.tlb=$(WinSysPath)
+C:\WINDOWS\system32\MSBIND.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSSTDFMT.DLL=$(WinSysPath)
+C:\WINDOWS\system32\ARVIEW2.OCX=$(WinSysPath)
+C:\WINDOWS\system32\ardespro2.dll=$(WinSysPath)
+C:\WINDOWS\system32\actskn43.ocx=$(WinSysPath)
+C:\WINDOWS\system32\arpro2.dll=$(WinSysPath)
+C:\WINDOWS\system32\msxml3.dll=$(WinSysPath)
+C:\Program Files\Common Files\Microsoft Shared\DAO\DAO350.DLL=$(MSDAOPath)
+C:\WINDOWS\system32\MSJET35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSJTER35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSJINT35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\vbajet32.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\expsrv.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSRD2X35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSREPL35.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\VB5DB.DLL=$(WinSysPath)
+C:\WINDOWS\system32\scrrun.dll=$(WinSysPath)
+C:\WINDOWS\system32\msvcrt.dll=$(WinSysPathSysFile)
+C:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.dll=$(AppPath)
+C:\WINDOWS\system32\MSDBRPTR.DLL=$(WinSysPath)
+C:\WINDOWS\system32\SynDBUtil.dll=$(WinSysPath)
+C:\WINDOWS\system32\MSDATGRD.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSDATLST.OCX=$(WinSysPath)
+C:\WINDOWS\system32\TABCTL32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\COMDLG32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSMASK32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMCT2.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMCTL.OCX=$(WinSysPath)
+C:\WINDOWS\system32\OWC10.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMM32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSXBSE35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSEXCL35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSEXCH35.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSTEXT35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSLTUS35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSPDOX35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSRDO20.DLL=$(WinSysPath)
+C:\WINDOWS\system32\RDOCURS.DLL=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+
+[Package|FMA PMS Setup|Configure Shared Files]
+Applicable=Yes
+D:\Documents and Settings\ehsan\My Documents\PayPhone\PMS.exe=Yes
+D:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.dll=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+D:\Documents and Settings\PMS\My Documents\PayPhone\PMS.exe=No
+D:\Documents and Settings\ehsan\My Documents\payphone_project\software\pms\PayPhone\PMS.exe=No
+D:\Documents and Settings\MAZANDARAN\My Documents\PayPhone_ver5\PMS.exe=No
+C:\Documents and Settings\Fara Modje Asia\My Documents\PayPhone_ver_6\PMS.exe=No
+C:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.dll=No
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=No
+
+[Package|FMA PMS Setup|DepFile]
+DepCabFile=PMS.CAB
+DepCabRun=PMS.INF
+
+[Package|FMA PMS Setup|Distribution]
+Type=single
+Size=
+Title=”Ì” „ ò‰ —· „—ò“Ì  ·›‰Â«Ì Â„ê«‰Ì ›—«„ÊÃ ¬”Ì«
+
+[Package|FMA PMS Setup|IconGroups]
+Group0=PMS
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|FMA PMS Setup|PMS]
+Icon1=PMS.exe
+Title1=PMS
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|FMA PMS Setup|Package]
+PackageFolder=c:\Documents and Settings\Fara Modje Asia\My Documents\pms_setup_ver6
+ProjectFolder=C:\Documents and Settings\Fara Modje Asia\My Documents\PayPhone_ver_6
+ServerSideCab=
+File1=c:\Documents and Settings\Fara Modje Asia\My Documents\pms_setup_ver6\setup.exe
+File2=c:\Documents and Settings\Fara Modje Asia\My Documents\pms_setup_ver6\Setup.Lst
+File3=c:\Documents and Settings\Fara Modje Asia\My Documents\pms_setup_ver6\PMS.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz

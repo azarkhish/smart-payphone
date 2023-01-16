@@ -1,0 +1,30 @@
+
+2010/03/07 10:44:49 Þ.Ù
+Start Time: 10:43:06 Þ.Ù
+Channel 0
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 959
+ *  *  *  *  *  * 
+End of report
+Start of update
+Setting Updated
+Synchronized
+End of update
+
+________________________________
+
+2010/03/07 01:11:45 È.Ù
+Start Time: 01:10:04 È.Ù
+Channel 0
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 959
+ *  *  *  *  *  * 
+End of report
+
+________________________________

@@ -1,0 +1,226 @@
+[Root]
+Most Recent Package=FMA Connection Controller Agent Setup
+
+
+[Package|FMA Connection Controller Agent Setup|FMA CCA Setup]
+Icon1=CCA.exe
+Title1=FMA CCA Setup
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|FMA Connection Controller Agent Setup|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=c:\Documents and Settings\Fara Modje Asia\My Documents\cca_setup_ver_6
+
+[Package|FMA Connection Controller Agent Setup|Configure DAO ISAMs]
+Applicable=Yes
+Xbase=Yes
+Excel=Yes
+Exchange=Yes
+Text=Yes
+Jet 2.x=Yes
+Lotus=Yes
+Paradox=Yes
+
+[Package|FMA Connection Controller Agent Setup|Configure DAO ODBC]
+JetWorkspace=Yes
+ODBCDirect=Yes
+
+[Package|FMA Connection Controller Agent Setup|Files Found]
+
+[Package|FMA Connection Controller Agent Setup|Files Released]
+
+[Package|FMA Connection Controller Agent Setup|Missing Dependency Information]
+D:\WINDOWS\system32\MSEXCH35.DLL=
+D:\WINDOWS\system32\MSSTDFMT.DLL=
+D:\WINDOWS\system32\actskn43.ocx=
+D:\Program Files\Common Files\System\ado\msado20.tlb=
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\arpro2.dll=
+D:\WINDOWS\system32\arpro2.dll=
+C:\WINDOWS\system32\MSEXCH35.DLL=
+C:\WINDOWS\system32\MSSTDFMT.DLL=
+C:\WINDOWS\system32\actskn43.ocx=
+C:\Program Files\Common Files\System\ado\msado20.tlb=
+C:\WINDOWS\system32\arpro2.dll=
+
+[Package|FMA Connection Controller Agent Setup|Out-of-Date Dependency Information]
+D:\WINDOWS\system32\MSRDO20.DLL=
+D:\WINDOWS\system32\scrrun.dll=
+D:\WINDOWS\system32\MSSTDFMT.DLL=
+C:\WINDOWS\system32\MSRDO20.DLL=
+C:\WINDOWS\system32\scrrun.dll=
+
+[Package|FMA Connection Controller Agent Setup|Files Added]
+
+[Package|FMA Connection Controller Agent Setup|Files Removed]
+
+[Package|FMA Connection Controller Agent Setup|Files In Project]
+C:\Documents and Settings\Fara Modje Asia\My Documents\PayPhone_ver_6\CCA.exe=Yes
+C:\WINDOWS\system32\msvbvm60.dll=Yes
+C:\WINDOWS\system32\oleaut32.dll=Yes
+C:\WINDOWS\system32\olepro32.dll=Yes
+C:\WINDOWS\system32\asycfilt.dll=Yes
+C:\WINDOWS\system32\stdole2.tlb=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINDOWS\system32\arpro2.dll=Yes
+C:\Program Files\Common Files\DESIGNER\MSDERUN.DLL=Yes
+C:\Program Files\Common Files\System\ado\msado20.tlb=Yes
+C:\Program Files\Common Files\Microsoft Shared\DAO\DAO350.DLL=Yes
+C:\WINDOWS\system32\MSJET35.DLL=Yes
+C:\WINDOWS\system32\MSJTER35.DLL=Yes
+C:\WINDOWS\system32\MSJINT35.DLL=Yes
+C:\WINDOWS\system32\vbajet32.dll=Yes
+C:\WINDOWS\system32\expsrv.dll=Yes
+C:\WINDOWS\system32\MSRD2X35.DLL=Yes
+C:\WINDOWS\system32\MSREPL35.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=Yes
+C:\WINDOWS\system32\VB5DB.DLL=Yes
+C:\WINDOWS\system32\scrrun.dll=Yes
+C:\WINDOWS\system32\msvcrt.dll=Yes
+C:\WINDOWS\system32\actskn43.ocx=Yes
+C:\WINDOWS\system32\MSCOMM32.OCX=Yes
+C:\WINDOWS\system32\MSDATLST.OCX=Yes
+C:\WINDOWS\system32\MSBIND.DLL=Yes
+C:\WINDOWS\system32\MSSTDFMT.DLL=Yes
+C:\WINDOWS\system32\MSDATGRD.OCX=Yes
+C:\WINDOWS\system32\MSXBSE35.DLL=Yes
+C:\WINDOWS\system32\MSEXCL35.DLL=Yes
+C:\WINDOWS\system32\MSEXCH35.DLL=Yes
+C:\WINDOWS\system32\MSTEXT35.DLL=Yes
+C:\WINDOWS\system32\MSLTUS35.DLL=Yes
+C:\WINDOWS\system32\MSPDOX35.DLL=Yes
+C:\WINDOWS\system32\MSRDO20.DLL=Yes
+C:\WINDOWS\system32\RDOCURS.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINDOWS\system32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+
+[Package|FMA Connection Controller Agent Setup|Configure Registry Files]
+Applicable=No
+
+[Package|FMA Connection Controller Agent Setup|Configure Remote Servers]
+Applicable=No
+
+[Package|FMA Connection Controller Agent Setup|Install Locations]
+D:\Documents and Settings\ehsan\My Documents\PayPhone\CCA.exe=$(AppPath)
+D:\WINDOWS\system32\msvbvm60.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\oleaut32.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\olepro32.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\asycfilt.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\stdole2.tlb=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+D:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\arpro2.dll=$(WinSysPath)
+D:\Program Files\Common Files\DESIGNER\MSDERUN.DLL=$(CommonFiles)\designer
+D:\Program Files\Common Files\System\ado\msado20.tlb=$(WinSysPath)
+D:\Program Files\Common Files\Microsoft Shared\DAO\DAO350.DLL=$(MSDAOPath)
+D:\WINDOWS\system32\MSJET35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSJTER35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSJINT35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\vbajet32.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\expsrv.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSRD2X35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSREPL35.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\VB5DB.DLL=$(WinSysPath)
+D:\WINDOWS\system32\scrrun.dll=$(WinSysPath)
+D:\WINDOWS\system32\msvcrt.dll=$(WinSysPathSysFile)
+D:\WINDOWS\system32\actskn43.ocx=$(WinSysPath)
+D:\WINDOWS\system32\MSCOMM32.OCX=$(WinSysPath)
+D:\WINDOWS\system32\MSDATLST.OCX=$(WinSysPath)
+D:\WINDOWS\system32\MSBIND.DLL=$(WinSysPath)
+D:\WINDOWS\system32\MSSTDFMT.DLL=$(WinSysPath)
+D:\WINDOWS\system32\MSDATGRD.OCX=$(WinSysPath)
+D:\WINDOWS\system32\MSEXCL35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSEXCH35.DLL=$(WinSysPath)
+D:\WINDOWS\system32\MSLTUS35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSRDO20.DLL=$(WinSysPath)
+D:\WINDOWS\system32\RDOCURS.DLL=$(WinSysPath)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+D:\WINDOWS\system32\MSPDOX35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSTEXT35.DLL=$(WinSysPathSysFile)
+D:\WINDOWS\system32\MSXBSE35.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+D:\WINDOWS\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+D:\Documents and Settings\PMS\My Documents\PayPhone\CCA.exe=$(AppPath)
+D:\WINDOWS\system32\arpro2.dll=$(WinSysPath)
+D:\Documents and Settings\MAZANDARAN\My Documents\PayPhone_ver5\CCA.exe=$(AppPath)
+C:\Documents and Settings\Fara Modje Asia\My Documents\PayPhone_ver_6\CCA.exe=$(AppPath)
+C:\WINDOWS\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\oleaut32.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\olepro32.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\asycfilt.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\stdole2.tlb=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\arpro2.dll=$(WinSysPath)
+C:\Program Files\Common Files\DESIGNER\MSDERUN.DLL=$(CommonFiles)\designer
+C:\Program Files\Common Files\System\ado\msado20.tlb=$(WinSysPath)
+C:\Program Files\Common Files\Microsoft Shared\DAO\DAO350.DLL=$(MSDAOPath)
+C:\WINDOWS\system32\MSJET35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSJTER35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSJINT35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\vbajet32.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\expsrv.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSRD2X35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSREPL35.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\VB5DB.DLL=$(WinSysPath)
+C:\WINDOWS\system32\scrrun.dll=$(WinSysPath)
+C:\WINDOWS\system32\msvcrt.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\actskn43.ocx=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMM32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSDATLST.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSBIND.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSSTDFMT.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSDATGRD.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSXBSE35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSEXCL35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSEXCH35.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSTEXT35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSLTUS35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSPDOX35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSRDO20.DLL=$(WinSysPath)
+C:\WINDOWS\system32\RDOCURS.DLL=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+
+[Package|FMA Connection Controller Agent Setup|Configure Shared Files]
+Applicable=Yes
+D:\Documents and Settings\ehsan\My Documents\PayPhone\CCA.exe=No
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=No
+D:\Documents and Settings\PMS\My Documents\PayPhone\CCA.exe=No
+D:\Documents and Settings\MAZANDARAN\My Documents\PayPhone_ver5\CCA.exe=No
+C:\Documents and Settings\Fara Modje Asia\My Documents\PayPhone_ver_6\CCA.exe=No
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=No
+
+[Package|FMA Connection Controller Agent Setup|Distribution]
+Type=single
+Size=
+Title=”Ì” „ ò‰ —· «‰ ﬁ«· œ«œÂ ›—«„ÊÃ ¬”Ì«
+
+[Package|FMA Connection Controller Agent Setup|CCA ]
+Icon1=CCA.exe
+Title1=CCA
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|FMA Connection Controller Agent Setup|IconGroups]
+Group0=CCA
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|FMA Connection Controller Agent Setup|Package]
+PackageFolder=c:\Documents and Settings\Fara Modje Asia\My Documents\cca_setup_ver_6
+ProjectFolder=C:\Documents and Settings\Fara Modje Asia\My Documents\PayPhone_ver_6
+ServerSideCab=
+File1=c:\Documents and Settings\Fara Modje Asia\My Documents\cca_setup_ver_6\setup.exe
+File2=c:\Documents and Settings\Fara Modje Asia\My Documents\cca_setup_ver_6\Setup.Lst
+File3=c:\Documents and Settings\Fara Modje Asia\My Documents\cca_setup_ver_6\CCA.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz

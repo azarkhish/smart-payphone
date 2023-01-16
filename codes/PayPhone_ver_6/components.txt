@@ -1,0 +1,12 @@
+activeskin 4.3
+data dynamic activereport runtime designer
+data dynamic active reportviewer 2
+m  s  comm control 6
+m  s  common dialog control 6(sp3)
+m  s  datagrid control 6
+m  s  datalist control 6
+m  s  masked edit control 6
+m  s  office xp web component
+m  s tabbed dialog control 6 (sp3)
+m  s windows common control 6 (sp6)
+m  s windows common control-2 6 (sp4)

@@ -1,0 +1,11 @@
+
+2010/02/03 12:25:25 Þ.Ù
+Start Time: 12:23:40 Þ.Ù
+Channel 4
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 4
+ * 
+________________________________

@@ -1,0 +1,15 @@
+visual basic for applications
+v      b     runtime object and...
+v      b     object and ...
+ole automation
+m      s     activex data object 2.5
+m      s     data binding collection
+data dynamic active report 
+"     "         "    "   runtime
+active skin 4.3
+data dynamic activereport 2
+m      s  xml v3.0
+m      s  DAO 3.51 object library
+kamau's db utilities
+m      s scripting runtime
+m      s SQLDMO object library

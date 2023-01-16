@@ -1,0 +1,18 @@
+<html>
+<body>
+<pre>
+<h1>µVision3 Build Log</h1>
+<h2>Project:</h2>
+C:\payphone_project\micro controllers\tel micro\tel_u_works\tel_u_ver2_sam\tel.uv2
+Project File Date:  01/15/2009
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling Tel.asm...
+linking...
+Program Size: data=8.0 xdata=0 code=62058
+creating hex file from "tel"...
+"tel" - 0 Error(s), 0 Warning(s).
+</pre>
+</body>
+</html>

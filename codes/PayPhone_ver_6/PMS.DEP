@@ -1,0 +1,110 @@
+[Version]
+Version=1.0.0.0
+
+[PMS.exe <0009>]
+Dest=$(AppPath)
+Date=2008/06/10
+Time=21:06
+Version=1.0.0.0
+CABFilename=PMS.CAB
+CABINFFile=PMS.INF
+Uses1=msvbvm60.dll
+Uses2=oleaut32.dll
+Uses3=olepro32.dll
+Uses4=asycfilt.dll
+Uses5=stdole2.tlb
+Uses6=COMCAT.DLL
+Uses7=shlwapi.dll
+Uses8=MSDERUN.DLL
+Uses9=msado25.tlb
+Uses10=MSBIND.DLL
+Uses11=ARVIEW2.OCX
+Uses12=ardespro2.dll
+Uses13=actskn43.ocx
+Uses14=arpro2.dll
+Uses15=msxml3.dll
+Uses16=DAO350.DLL
+Uses17=SynDBUtil.dll
+Uses18=scrrun.dll
+Uses19=SQLDMO.dll
+Uses20=MSDATGRD.OCX
+Uses21=MSDATLST.OCX
+Uses22=TABCTL32.OCX
+Uses23=COMDLG32.OCX
+Uses24=MSMASK32.OCX
+Uses25=MSCOMM32.OCX
+Uses26=MSCOMCT2.OCX
+Uses27=MSCOMCTL.OCX
+Uses28=OWC10.DLL
+
+[shlwapi.dll <0009>]
+Dest=$(WinSysPath)
+Date=2005/09/03
+Time=04:22
+Version=6.0.2900.2753
+
+[msado25.tlb <0009>]
+Dest=$(WinSysPath)
+Date=2004/08/04
+Time=09:51
+Version=2.81.1117.0
+
+[MSSTDFMT.DLL <0009>]
+Dest=$(WinSysPath)
+Date=2000/05/23
+Time=22:45
+Version=6.0.84.50
+
+[ARVIEW2.OCX <0009>]
+Dest=$(WinSysPath)
+Date=2002/01/31
+Time=10:08
+Version=2.0.0.1170
+
+[ardespro2.dll <0009>]
+Dest=$(WinSysPath)
+Date=2002/01/31
+Time=10:00
+Version=2.0.0.1170
+
+[actskn43.ocx <0009>]
+Dest=$(WinSysPath)
+Date=2008/02/09
+Time=23:29
+Version=4.3.0.0
+
+[arpro2.dll <0009>]
+Dest=$(WinSysPath)
+Date=2002/01/31
+Time=10:08
+Version=2.0.0.1170
+
+[msxml3.dll <0009>]
+Dest=$(WinSysPath)
+Date=2006/09/13
+Time=09:31
+Version=8.70.1113.0
+
+[SynDBUtil.dll <0009>]
+Dest=$(WinSysPath)
+Date=2006/05/29
+Time=05:55
+Version=1.0.0.17
+
+[SQLDMO.dll <0009>]
+Dest=$(AppPath)
+Date=2001/04/17
+Time=23:23
+Version=2000.80.382.0
+
+[OWC10.DLL <0009>]
+Dest=$(WinSysPath)
+Date=2003/08/04
+Time=13:19
+Version=10.0.5605.0
+
+[MSEXCH35.DLL <0009>]
+Dest=$(WinSysPath)
+Date=1998/04/24
+Time=19:40
+Version=3.51.623.0

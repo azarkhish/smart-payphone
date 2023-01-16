@@ -1,0 +1,1027 @@
+
+2010/02/01 11:29:08 Þ.Ù
+Start Time: 11:27:37 Þ.Ù
+Channel 6
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/01 11:48:13 Þ.Ù
+Start Time: 11:46:41 Þ.Ù
+Channel 2
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+Start of update
+Setting Updated
+Synchronized
+End of update
+
+________________________________
+
+2010/02/01 11:52:55 Þ.Ù
+Start Time: 11:51:24 Þ.Ù
+Channel 3
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/01 12:31:15 È.Ù
+Start Time: 12:29:44 È.Ù
+Channel 6
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+Start of update
+Setting Updated
+Synchronized
+End of update
+
+________________________________
+
+2010/02/01 12:42:54 È.Ù
+Start Time: 12:41:24 È.Ù
+Channel 2
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/01 02:29:32 È.Ù
+Start Time: 02:28:27 È.Ù
+Channel 3
+RING
+CONNECTED
+
+________________________________
+
+2010/02/01 06:10:26 È.Ù
+Start Time: 06:08:58 È.Ù
+Channel 6
+RING
+CONNECTED
+Handshake complete
+
+________________________________
+
+2010/02/01 06:11:03 È.Ù
+Start Time: 06:09:58 È.Ù
+Channel 2
+RING
+CONNECTED
+
+________________________________
+
+2010/02/01 08:27:54 È.Ù
+Start Time: 08:26:49 È.Ù
+Channel 3
+RING
+CONNECTED
+
+________________________________
+
+2010/02/01 09:32:15 È.Ù
+Start Time: 09:31:10 È.Ù
+Channel 2
+RING
+CONNECTED
+
+________________________________
+
+2010/02/01 09:33:01 È.Ù
+Start Time: 09:31:35 È.Ù
+Channel 6
+RING
+CONNECTED
+Handshake complete
+
+________________________________
+
+2010/02/01 10:10:59 È.Ù
+Start Time: 10:09:31 È.Ù
+Channel 3
+RING
+CONNECTED
+Handshake complete
+
+________________________________
+
+2010/02/01 10:59:12 È.Ù
+Start Time: 10:57:44 È.Ù
+Channel 6
+RING
+CONNECTED
+Handshake complete
+
+________________________________
+
+2010/02/01 10:59:20 È.Ù
+Start Time: 10:58:15 È.Ù
+Channel 2
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 12:01:17 Þ.Ù
+Start Time: 11:59:46 È.Ù
+Channel 1
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/03 12:11:30 Þ.Ù
+Start Time: 12:08:41 Þ.Ù
+Channel 5
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+Start of update
+PMS NUM Updated
+Free NUM Updated
+Charge scheduller Updated
+Black List Updated
+White List Updated
+SAM Updated
+
+________________________________
+
+2010/02/03 12:12:22 Þ.Ù
+Start Time: 12:10:40 Þ.Ù
+Channel 0
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/03 12:23:37 Þ.Ù
+Start Time: 12:21:49 Þ.Ù
+Channel 3
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ * 
+________________________________
+
+2010/02/03 12:27:15 Þ.Ù
+Start Time: 12:25:42 Þ.Ù
+Channel 6
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/03 12:33:40 Þ.Ù
+Start Time: 12:32:09 Þ.Ù
+Channel 0
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/03 01:32:09 Þ.Ù
+Start Time: 01:30:24 Þ.Ù
+Channel 6
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ * 
+________________________________
+
+2010/02/03 01:35:06 Þ.Ù
+Start Time: 01:33:23 Þ.Ù
+Channel 3
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ * 
+________________________________
+
+2010/02/03 01:42:22 Þ.Ù
+Start Time: 01:40:36 Þ.Ù
+Channel 1
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ * 
+________________________________
+
+2010/02/03 01:49:03 Þ.Ù
+Start Time: 01:46:39 Þ.Ù
+Channel 3
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  * 
+________________________________
+
+2010/02/03 01:50:33 Þ.Ù
+Start Time: 01:48:09 Þ.Ù
+Channel 4
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  * 
+________________________________
+
+2010/02/03 01:52:38 Þ.Ù
+Start Time: 01:49:49 Þ.Ù
+Channel 1
+RING
+CONNECTED
+Handshake complete
+
+________________________________
+
+2010/02/03 01:52:50 Þ.Ù
+Start Time: 01:51:17 Þ.Ù
+Channel 6
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/03 01:56:18 Þ.Ù
+Start Time: 01:54:29 Þ.Ù
+Channel 0
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ * 
+________________________________
+
+2010/02/03 02:02:28 Þ.Ù
+Start Time: 02:00:13 Þ.Ù
+Channel 0
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  * 
+________________________________
+
+2010/02/03 02:03:11 Þ.Ù
+Start Time: 02:01:39 Þ.Ù
+Channel 2
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/03 02:05:58 Þ.Ù
+Start Time: 02:04:10 Þ.Ù
+Channel 3
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ * 
+________________________________
+
+2010/02/03 02:14:40 Þ.Ù
+Start Time: 02:13:01 Þ.Ù
+Channel 0
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/03 02:16:31 Þ.Ù
+Start Time: 02:15:26 Þ.Ù
+Channel 0
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:17:31 Þ.Ù
+Start Time: 02:15:11 Þ.Ù
+Channel 6
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  * 
+________________________________
+
+2010/02/03 02:18:08 Þ.Ù
+Start Time: 02:17:03 Þ.Ù
+Channel 0
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:18:41 Þ.Ù
+Start Time: 02:17:36 Þ.Ù
+Channel 6
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:19:11 Þ.Ù
+Start Time: 02:16:36 Þ.Ù
+Channel 1
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  * 
+________________________________
+
+2010/02/03 02:19:51 Þ.Ù
+Start Time: 02:18:46 Þ.Ù
+Channel 0
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:19:56 Þ.Ù
+Start Time: 02:18:16 Þ.Ù
+Channel 2
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/03 02:20:05 Þ.Ù
+Start Time: 02:19:00 Þ.Ù
+Channel 6
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:20:23 Þ.Ù
+Start Time: 02:19:18 Þ.Ù
+Channel 1
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:22:11 Þ.Ù
+Start Time: 02:20:27 Þ.Ù
+Channel 6
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ * 
+________________________________
+
+2010/02/03 02:22:45 Þ.Ù
+Start Time: 02:21:40 Þ.Ù
+Channel 0
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:22:54 Þ.Ù
+Start Time: 02:21:49 Þ.Ù
+Channel 1
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:23:02 Þ.Ù
+Start Time: 02:21:57 Þ.Ù
+Channel 2
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:23:31 Þ.Ù
+Start Time: 02:22:26 Þ.Ù
+Channel 6
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:24:31 Þ.Ù
+Start Time: 02:23:21 Þ.Ù
+Channel 0
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:24:34 Þ.Ù
+Start Time: 02:23:29 Þ.Ù
+Channel 1
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:24:53 Þ.Ù
+Start Time: 02:23:25 Þ.Ù
+Channel 2
+RING
+CONNECTED
+Handshake complete
+
+________________________________
+
+2010/02/03 02:24:55 Þ.Ù
+Start Time: 02:23:50 Þ.Ù
+Channel 6
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:25:41 Þ.Ù
+Start Time: 02:24:36 Þ.Ù
+Channel 0
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:27:33 Þ.Ù
+Start Time: 02:26:02 Þ.Ù
+Channel 1
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/03 02:28:59 Þ.Ù
+Start Time: 02:27:54 Þ.Ù
+Channel 2
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:29:13 Þ.Ù
+Start Time: 02:28:08 Þ.Ù
+Channel 6
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:29:31 Þ.Ù
+Start Time: 02:28:26 Þ.Ù
+Channel 0
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:29:39 Þ.Ù
+Start Time: 02:28:34 Þ.Ù
+Channel 1
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:29:58 Þ.Ù
+Start Time: 02:28:19 Þ.Ù
+Channel 3
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/03 02:30:25 Þ.Ù
+Start Time: 02:29:20 Þ.Ù
+Channel 6
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:30:30 Þ.Ù
+Start Time: 02:29:25 Þ.Ù
+Channel 2
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:30:40 Þ.Ù
+Start Time: 02:29:35 Þ.Ù
+Channel 0
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:30:56 Þ.Ù
+Start Time: 02:29:51 Þ.Ù
+Channel 1
+RING
+CONNECTED
+
+________________________________
+
+2010/02/03 02:32:08 Þ.Ù
+Start Time: 02:30:35 Þ.Ù
+Channel 6
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/04 11:10:28 Þ.Ù
+Start Time: 11:09:38 Þ.Ù
+Channel 2
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  * 
+________________________________
+
+2010/02/04 11:15:17 Þ.Ù
+Start Time: 11:14:33 Þ.Ù
+Channel 4
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ * 
+________________________________
+
+2010/02/04 11:16:16 Þ.Ù
+Start Time: 11:15:36 Þ.Ù
+Channel 0
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ * 
+________________________________
+
+2010/02/04 11:20:47 Þ.Ù
+Start Time: 11:20:07 Þ.Ù
+Channel 3
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ * 
+________________________________
+
+2010/02/04 11:23:53 Þ.Ù
+Start Time: 11:22:43 Þ.Ù
+Channel 1
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  * 
+________________________________
+
+2010/02/04 11:26:07 Þ.Ù
+Start Time: 11:24:36 Þ.Ù
+Channel 2
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/04 11:28:18 Þ.Ù
+Start Time: 11:27:20 Þ.Ù
+Channel 3
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:28:29 Þ.Ù
+Start Time: 11:27:45 Þ.Ù
+Channel 5
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ * 
+________________________________
+
+2010/02/04 11:28:47 Þ.Ù
+Start Time: 11:28:27 Þ.Ù
+Channel 2
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:29:03 Þ.Ù
+Start Time: 11:28:18 Þ.Ù
+Channel 1
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:29:30 Þ.Ù
+Start Time: 11:29:09 Þ.Ù
+Channel 2
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:29:33 Þ.Ù
+Start Time: 11:29:05 Þ.Ù
+Channel 5
+RING
+CONNECTED
+Handshake complete
+
+________________________________
+
+2010/02/04 11:29:44 Þ.Ù
+Start Time: 11:28:59 Þ.Ù
+Channel 3
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:30:04 Þ.Ù
+Start Time: 11:29:44 Þ.Ù
+Channel 5
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:30:09 Þ.Ù
+Start Time: 11:29:27 Þ.Ù
+Channel 1
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:30:12 Þ.Ù
+Start Time: 11:29:42 Þ.Ù
+Channel 2
+RING
+CONNECTED
+Handshake complete
+
+________________________________
+
+2010/02/04 11:30:18 Þ.Ù
+Start Time: 11:29:58 Þ.Ù
+Channel 3
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:30:48 Þ.Ù
+Start Time: 11:30:20 Þ.Ù
+Channel 5
+RING
+CONNECTED
+Handshake complete
+
+________________________________
+
+2010/02/04 11:31:27 Þ.Ù
+Start Time: 11:30:58 Þ.Ù
+Channel 1
+RING
+CONNECTED
+Handshake complete
+
+________________________________
+
+2010/02/04 11:34:04 Þ.Ù
+Start Time: 11:33:27 Þ.Ù
+Channel 2
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+
+________________________________
+
+2010/02/04 11:35:33 Þ.Ù
+Start Time: 11:35:12 Þ.Ù
+Channel 5
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:35:49 Þ.Ù
+Start Time: 11:35:26 Þ.Ù
+Channel 2
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:35:53 Þ.Ù
+Start Time: 11:34:14 Þ.Ù
+Channel 3
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/04 11:36:03 Þ.Ù
+Start Time: 11:35:19 Þ.Ù
+Channel 1
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:36:05 Þ.Ù
+Start Time: 11:35:38 Þ.Ù
+Channel 5
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:36:15 Þ.Ù
+Start Time: 11:35:53 Þ.Ù
+Channel 2
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:36:17 Þ.Ù
+
+________________________________
+
+2010/02/04 11:36:23 Þ.Ù
+
+________________________________
+
+2010/02/04 11:37:13 Þ.Ù
+Start Time: 11:36:51 Þ.Ù
+Channel 2
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:37:19 Þ.Ù
+Start Time: 11:36:36 Þ.Ù
+Channel 1
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:37:26 Þ.Ù
+Start Time: 11:36:44 Þ.Ù
+Channel 3
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:37:33 Þ.Ù
+Start Time: 11:36:48 Þ.Ù
+Channel 4
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ * 
+________________________________
+
+2010/02/04 11:37:40 Þ.Ù
+Start Time: 11:36:57 Þ.Ù
+Channel 5
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:37:59 Þ.Ù
+Start Time: 11:37:17 Þ.Ù
+Channel 2
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:38:22 Þ.Ù
+Start Time: 11:37:25 Þ.Ù
+Channel 1
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 11:38:25 Þ.Ù
+Start Time: 11:37:58 Þ.Ù
+Channel 3
+RING
+CONNECTED
+Handshake complete
+
+________________________________
+
+2010/02/04 11:45:29 Þ.Ù
+Start Time: 11:45:01 Þ.Ù
+Channel 4
+RING
+CONNECTED
+Handshake complete
+
+________________________________
+
+2010/02/04 12:30:38 È.Ù
+Start Time: 12:29:07 È.Ù
+Channel 1
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________
+
+2010/02/04 12:38:27 È.Ù
+Start Time: 12:37:23 È.Ù
+Channel 4
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  * 
+________________________________
+
+2010/02/04 12:40:25 È.Ù
+Start Time: 12:40:03 È.Ù
+Channel 1
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 12:40:53 È.Ù
+Start Time: 12:40:32 È.Ù
+Channel 1
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 12:41:09 È.Ù
+Start Time: 12:40:12 È.Ù
+Channel 4
+RING
+CONNECTED
+
+________________________________
+
+2010/02/04 12:44:11 È.Ù
+Start Time: 12:42:40 È.Ù
+Channel 1
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 33
+ *  *  *  *  *  * 
+End of report
+
+________________________________

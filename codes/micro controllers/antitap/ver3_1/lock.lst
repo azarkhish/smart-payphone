@@ -1,0 +1,787 @@
+A51 MACRO ASSEMBLER  LOCK                                                                 07/04/2009 13:05:12 PAGE     1
+
+
+MACRO ASSEMBLER A51 V7.10
+OBJECT MODULE PLACED IN lock.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE lock.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+  00B0                 1             lcd_port equ P3
+  00B7                 2             en equ P3.7
+  00B5                 3             rs equ P3.5
+  0093                 4             lock equ P1.3
+  0001                 5             LCD_CLR equ 01H
+  0080                 6             LCD_LN1 equ 80H
+  00C0                 7             LCD_LN2 equ 0C0H
+  0000                 8             LOCK_i equ 0
+  0001                 9             UNLOCK_i equ 1
+  0002                10             EX_i equ 2
+  0003                11             OK_i equ 3
+                      12     
+  REG                 13             var1 equ r2
+  REG                 14             temp equ r3
+  REG                 15             delay equ r4
+                      16     
+  REG                 17             scan equ r5
+  0000                18             iskey equ 0H
+  0001                19             newcode equ 1H
+  REG                 20             keyval equ r6
+  REG                 21             status equ r7
+  0030                22             max equ 30H
+  0031                23             count equ 31H
+  0032                24             length equ 32H
+  0033                25             retries equ 33H
+  0040                26             input equ 40H
+  0050                27             upass equ 50H
+                      28     
+  0002                29             is_ok equ 2H
+                      30     
+  0000                31             FALSE equ 0
+  0001                32             TRUE equ 1
+  0002                33             RETRY equ 2
+  0003                34             EXIT equ 3
+                      35     
+  0090                36             keyport equ P1
+  0090                37             col1 equ P1.0
+  0091                38             col2 equ P1.1
+  0092                39             col3 equ P1.2
+                      40     
+0000                  41             org 0H
+0000 C2B0             42              clr p3.0
+0002 C2B1             43              clr p3.1
+                      44             
+0004 D2B7             45             setb p3.7
+0006                  46             test:
+0006 30B704           47             jnb p3.7,hook
+0009 D2B2             48             setb p3.2
+000B 80F9             49             jmp test
+000D                  50             hook:
+000D C2B2             51             clr p3.2
+000F 80F5             52             jmp test
+                      53             
+0011 31D1             54             acall lcd_init
+0013 514C             55             acall keypad_init
+0015 C200             56             clr iskey
+0017 758160           57             mov sp,#60H
+001A 753303           58             mov retries,#3
+A51 MACRO ASSEMBLER  LOCK                                                                 07/04/2009 13:05:12 PAGE     2
+
+001D                  59     pre_main:
+001D 7401             60             mov a,#LCD_CLR
+001F 31F9             61             acall lcd_cmd
+0021 900198           62             mov dptr,#salam
+0024 512F             63             acall lcd_str
+0026 120409           64       lcall delay_1sec
+0029                  65     main:
+0029 7401             66             mov a,#LCD_CLR
+002B 31F9             67             acall lcd_cmd
+002D 900117           68             mov dptr,#str_enter
+0030 512F             69             acall lcd_str
+0032 74C0             70             mov a,#0C0H
+0034 31F9             71             acall lcd_cmd
+0036 7400             72             mov a,#LOCK_i
+0038 5115             73             acall lcd_dat
+003A 743A             74             mov a,#':'
+003C 5115             75             acall lcd_dat
+003E 753004           76             mov max,#4
+0041 519F             77             acall get_input
+0043 BF01E3           78             cjne status,#TRUE,main
+0046 900359           79             mov dptr,#chk_12345
+0049 753104           80             mov count,#4
+004C 712D             81             acall chk
+004E 300204           82             jnb is_ok,main_2
+0051 716E             83             acall set_upass
+0053 80D4             84             sjmp main
+0055                  85     main_2:
+0055 20010A           86             jb newcode,main_3
+0058 900369           87             mov dptr,#chk_upass
+005B 753104           88             mov count,#4
+005E 712D             89             acall chk
+0060 8002             90             sjmp main_4
+0062                  91     main_3:
+0062 7141             92             acall chk_newcode
+0064                  93     main_4:
+0064 300247           94             jnb is_ok, main_5
+0067 753303           95             mov retries,#3
+006A C293             96             clr lock
+006C 7401             97             mov a,#LCD_CLR
+006E 31F9             98             acall lcd_cmd
+0070 7403             99             mov a,#OK_i
+0072 5115            100             acall lcd_dat
+0074 900156          101             mov dptr,#inactive
+0077 512F            102             acall lcd_str
+0079 74C0            103             mov a,#LCD_LN2
+007B 31F9            104             acall lcd_cmd
+007D 90015F          105             mov dptr,#inactive1
+0080 512F            106             acall lcd_str
+0082 9109            107             acall delay_1sec
+0084 7401            108             mov a,#LCD_CLR
+0086 31F9            109             acall lcd_cmd
+0088 90016C          110             mov dptr,#inactive2
+008B 512F            111             acall lcd_str
+008D 74C0            112             mov a,#LCD_LN2
+008F 31F9            113             acall lcd_cmd
+0091 90017D          114             mov dptr,#inactive3
+0094 512F            115             acall lcd_str
+0096                 116     main_6:
+0096 5150            117             acall get_key
+0098 BE0CFB          118             cjne keyval,#12,main_6
+009B D293            119             setb lock
+009D 7401            120             mov a,#LCD_CLR
+009F 31F9            121             acall lcd_cmd
+00A1 7403            122             mov a,#OK_i
+00A3 5115            123             acall lcd_dat
+00A5 900188          124             mov dptr,#active
+A51 MACRO ASSEMBLER  LOCK                                                                 07/04/2009 13:05:12 PAGE     3
+
+00A8 512F            125             acall lcd_str
+00AA 9109            126             acall delay_1sec
+00AC 0129            127             ajmp main
+00AE                 128     main_5:
+00AE 7401            129             mov a,#LCD_CLR
+00B0 31F9            130             acall lcd_cmd
+00B2 7480            131             mov a,#LCD_LN1
+00B4 31F9            132             acall lcd_cmd
+00B6 7402            133             mov a,#EX_i
+00B8 5115            134             acall lcd_dat
+00BA 742F            135             mov a,#2FH
+00BC 2533            136             add a,retries
+00BE 5115            137             acall lcd_dat
+00C0 900138          138             mov dptr,#str_retry
+00C3 512F            139             acall lcd_str
+00C5 9109            140             acall delay_1sec
+00C7 D53302          141             djnz retries,main_8
+00CA 8002            142             sjmp main_7
+00CC                 143     main_8:
+00CC 0129            144             ajmp main
+00CE                 145     main_7:
+00CE 7401            146             mov a,#LCD_CLR
+00D0 31F9            147             acall lcd_cmd
+00D2 7480            148             mov a,#LCD_LN1
+00D4 31F9            149             acall lcd_cmd
+00D6 7402            150             mov a,#EX_i
+00D8 5115            151             acall lcd_dat
+00DA 900144          152             mov dptr,#str_blocked
+00DD 512F            153             acall lcd_str
+00DF 7402            154             mov a,#EX_i
+00E1 5115            155             acall lcd_dat
+00E3 74C0            156             mov a,#LCD_LN2
+00E5 31F9            157             acall lcd_cmd
+00E7 7400            158             mov a,#LOCK_i
+00E9 5115            159             acall lcd_dat
+00EB 743A            160             mov a,#':'
+00ED 5115            161             acall lcd_dat
+00EF 75300A          162             mov max,#10
+00F2 519F            163             acall get_input
+00F4 75310A          164             mov count,#10
+00F7 90035E          165             mov dptr,#chk_master
+00FA 712D            166             acall chk
+00FC 3002CF          167             jnb is_ok, main_7
+00FF 7401            168             mov a,#LCD_CLR
+0101 31F9            169             acall lcd_cmd
+0103 7480            170             mov a,#LCD_LN1
+0105 31F9            171             acall lcd_cmd
+0107 7403            172             mov a,#OK_i
+0109 5115            173             acall lcd_dat
+010B 90014C          174             mov dptr,#str_unblocked
+010E 512F            175             acall lcd_str
+0110 9109            176             acall delay_1sec
+0112 753303          177             mov retries, #3
+0115                 178     main_1:
+0115 0129            179             ajmp main
+                     180     
+0117                 181     str_enter:
+0117 456E7465        182     db "Enter lock Code",0H
+011B 72206C6F                
+011F 636B2043                
+0123 6F646500                
+0127                 183     str_master:
+0127 456E7465        184     db "Enter Mastercode",0H
+012B 72204D61                
+012F 73746572                
+0133 636F6465                
+A51 MACRO ASSEMBLER  LOCK                                                                 07/04/2009 13:05:12 PAGE     4
+
+0137 00                      
+0138                 185     str_retry:
+0138 20547269        186     db " Tries left", 0H
+013C 6573206C                
+0140 65667400                
+0144                 187     str_blocked:
+0144 426C6F63        188     db "Blocked",0H
+0148 6B656400                
+014C                 189     str_unblocked:
+014C 556E626C        190     db "Unblocked",0H
+0150 6F636B65                
+0154 6400                    
+0156                 191     inactive:
+0156 204C6F63        192     db " Lock is",0H
+015A 6B206973                
+015E 00                      
+015F                 193     inactive1:
+015F 64656163        194     db "deactivated!", 0H
+0163 74697661                
+0167 74656421                
+016B 00                      
+016C                 195     inactive2:
+016C 50726573        196     db "Press '#' key to", 0H
+0170 73202723                
+0174 27206B65                
+0178 7920746F                
+017C 00                      
+017D                 197     inactive3:
+017D 6C6F636B        198     db "lock again", 0H
+0181 20616761                
+0185 696E00                  
+0188                 199     active:
+0188 4C6F636B        200     db "Lock is active!", 0H
+018C 20697320                
+0190 61637469                
+0194 76652100                
+0198                 201     salam:
+0198 73616C61        202     db "salam :)", 0H
+019C 6D203A29                
+01A0 00                      
+01A1                 203     lcd_reset:
+01A1 75B0FF          204             mov lcd_port, #0FFH
+01A4 7C14            205             mov delay,#20
+01A6 5143            206             acall delayms
+01A8 75B083          207             mov lcd_port, #83H
+01AB 75B003          208             mov lcd_port, #03H
+01AE 7C0F            209             mov delay,#15
+01B0 5143            210             acall delayms
+01B2 75B083          211             mov lcd_port, #83H
+01B5 75B003          212             mov lcd_port, #03H
+01B8 7C05            213             mov delay,#5
+01BA 5143            214             acall delayms
+01BC 75B083          215             mov lcd_port, #83H
+01BF 75B003          216             mov lcd_port, #03H
+01C2 7C05            217             mov delay,#5
+01C4 5143            218             acall delayms
+01C6 75B082          219             mov lcd_port, #82H
+01C9 75B002          220             mov lcd_port, #02H
+01CC 7C05            221             mov delay,#5
+01CE 5143            222             acall delayms
+01D0 22              223             ret
+                     224     
+01D1                 225     lcd_init:
+01D1 31A1            226             acall lcd_reset
+01D3 7428            227             mov a,#28H
+01D5 31F9            228             acall lcd_cmd
+A51 MACRO ASSEMBLER  LOCK                                                                 07/04/2009 13:05:12 PAGE     5
+
+01D7 740C            229             mov a,#0CH
+01D9 31F9            230             acall lcd_cmd
+01DB 7406            231             mov a,#06H
+01DD 31F9            232             acall lcd_cmd
+01DF 7480            233             mov a,#80H
+01E1 31F9            234             acall lcd_cmd
+01E3 31E6            235             acall cgbuild
+01E5 22              236             ret
+                     237     
+01E6                 238     cgbuild:
+01E6 753120          239             mov count,#32
+01E9 7440            240             mov a,#40H
+01EB 31F9            241             acall lcd_cmd
+01ED 90041A          242             mov dptr,#icons
+01F0                 243     cgbuild_l1:
+01F0 E4              244             clr a
+01F1 93              245             movc a,@a+dptr
+01F2 5115            246             acall lcd_dat
+01F4 A3              247             inc dptr
+01F5 D531F8          248             djnz count,cgbuild_l1
+01F8 22              249             ret
+                     250     
+01F9                 251     lcd_cmd:
+01F9 FB              252             mov temp,a
+01FA C4              253             swap a
+01FB 540F            254             anl a,#0FH
+01FD 2480            255             add a,#80H
+01FF F5B0            256             mov lcd_port,a
+0201 540F            257             anl a,#0FH
+0203 F5B0            258             mov lcd_port,a
+                     259     
+0205 EB              260             mov a,temp
+0206 540F            261             anl a,#0FH
+0208 2480            262             add a,#80H
+020A F5B0            263             mov lcd_port,a
+020C 540F            264             anl a,#0FH
+020E F5B0            265             mov lcd_port,a
+                     266     
+0210 7C0A            267             mov delay,#10
+0212 5143            268             acall delayms
+0214 22              269             ret
+                     270     
+0215                 271     lcd_dat:
+0215 FB              272             mov temp,a
+0216 C4              273             swap a
+0217 540F            274             anl a,#0FH
+0219 24A0            275             add a,#0A0H
+021B F5B0            276             mov lcd_port,a
+021D 00              277             nop
+021E C2B7            278             clr en
+                     279     
+0220 EB              280             mov a,temp
+0221 540F            281             anl a,#0FH
+0223 24A0            282             add a,#0A0H
+0225 F5B0            283             mov lcd_port,a
+0227 00              284             nop
+0228 C2B7            285             clr en
+                     286     
+022A 7C0A            287             mov delay,#10
+022C 5143            288             acall delayms
+022E 22              289             ret
+                     290     
+022F                 291     lcd_str:
+022F E4              292             clr a
+0230 93              293             movc a,@a+dptr
+0231 6005            294             jz lcd_str_end
+A51 MACRO ASSEMBLER  LOCK                                                                 07/04/2009 13:05:12 PAGE     6
+
+0233 A3              295             inc dptr
+0234 5115            296             acall lcd_dat
+0236 80F7            297             sjmp lcd_str
+0238                 298     lcd_str_end:
+0238 22              299             ret
+                     300     
+0239                 301     lcd_str1:
+0239 E4              302             clr a
+023A E6              303             mov a,@r0
+023B 6005            304             jz lcd_str_end1
+023D 08              305             inc r0
+023E 5115            306             acall lcd_dat
+0240 80F7            307             sjmp lcd_str1
+0242                 308     lcd_str_end1:
+0242 22              309             ret
+                     310     
+0243                 311     delayms:
+0243 7AE6            312             mov var1,#230
+0245                 313     d:
+0245 00              314             nop
+0246 00              315             nop
+0247 DAFC            316             djnz var1,d
+0249 DCF8            317             djnz delay,delayms
+024B 22              318             ret
+                     319     
+024C                 320     keypad_init:
+024C 53900F          321             anl keyport,#0FH
+024F 22              322             ret
+                     323     
+0250                 324     get_key:
+0250 7E01            325             mov keyval,#1
+0252 7480            326             mov a,#80H
+0254 7B04            327             mov temp,#04
+0256                 328     read:
+0256 FD              329             mov scan,a
+0257 F4              330             cpl a
+0258 5290            331             anl keyport,a
+                     332             
+025A 209006          333             jb col1,next
+025D 3090FD          334             jnb col1,$
+0260 D200            335             setb iskey
+0262 22              336             ret
+0263                 337     next:   
+0263 209107          338             jb col2,next1
+0266 0E              339             inc keyval
+0267 3091FD          340             jnb col2,$
+026A D200            341             setb iskey
+026C 22              342             ret
+026D                 343     next1:
+026D 209208          344             jb col3,nokey
+0270 0E              345             inc keyval
+0271 0E              346             inc keyval
+0272 3092FD          347             jnb col3,$
+0275 D200            348             setb iskey
+0277 22              349             ret
+0278                 350     nokey:
+0278 ED              351             mov a,scan
+0279 4290            352             orl keyport,a
+027B 0E              353             inc keyval
+027C 0E              354             inc keyval
+027D 0E              355             inc keyval
+027E 03              356             rr a
+027F 7C0A            357             mov delay,#10
+0281 5143            358             acall delayms
+0283 DBD1            359             djnz temp,read
+                     360     
+A51 MACRO ASSEMBLER  LOCK                                                                 07/04/2009 13:05:12 PAGE     7
+
+0285 C200            361             clr iskey
+0287 22              362             ret
+                     363     
+0288                 364     translate:
+0288 EE              365             mov a,keyval
+0289 B40A03          366             cjne a,#10,jmp1
+028C 7E78            367             mov keyval,#'x'
+028E 22              368             ret
+028F                 369     jmp1:
+028F B40B03          370             cjne a,#11,jmp2
+0292 7E30            371             mov keyval,#'0'
+0294 22              372             ret
+0295                 373     jmp2:
+0295 B40C03          374             cjne a,#12,jmp3
+0298 7E65            375             mov keyval,#'e'
+029A 22              376             ret
+029B                 377     jmp3:
+029B 2430            378             add a,#'0'
+029D FE              379             mov keyval,a
+029E 22              380             ret
+                     381     
+029F                 382     get_input:
+029F 7840            383             mov r0,#input
+02A1 753100          384             mov count,#0
+02A4 0530            385             inc max
+02A6                 386     get_input_cnt:
+02A6 5150            387             acall get_key
+02A8 3000FB          388             jnb iskey,get_input_cnt
+02AB 5188            389             acall translate
+02AD EE              390             mov a, keyval
+02AE F6              391             mov @r0,a
+02AF B67820          392             cjne @r0,#'x',chk_e
+02B2 E531            393             mov a,count
+02B4 7003            394             jnz get_input_l1
+02B6 7F03            395             mov status,#EXIT
+02B8 22              396             ret
+02B9                 397     get_input_l1:
+02B9 0530            398             inc max
+02BB 1531            399             dec count
+02BD 7600            400             mov @r0,#0
+02BF 18              401             dec r0
+02C0 74C2            402             mov a,#0C2H
+02C2 2531            403             add a,count
+02C4 31F9            404             acall lcd_cmd
+02C6 7420            405             mov a,#' '
+02C8 5115            406             acall lcd_dat
+02CA 74C2            407             mov a,#0C2H
+02CC 2531            408             add a,count
+02CE 31F9            409             acall lcd_cmd
+02D0 80D4            410             sjmp get_input_cnt
+02D2                 411     chk_e:
+02D2 B6650B          412             cjne @r0,#'e',chk_key
+02D5 7600            413             mov @r0,#0
+02D7 1530            414             dec max
+02D9 E530            415             mov a,max
+02DB 7027            416             jnz get_input_lerr
+02DD 7F01            417             mov status,#TRUE
+02DF 22              418             ret
+02E0                 419     chk_key:
+02E0 0531            420             inc count
+02E2 D53019          421             djnz max, get_input_nxt
+02E5 90031B          422             mov dptr,#get_input_err
+02E8                 423     get_input_retry:
+02E8 754000          424             mov input,#0
+02EB 7401            425             mov a,#LCD_CLR
+02ED 31F9            426             acall lcd_cmd
+A51 MACRO ASSEMBLER  LOCK                                                                 07/04/2009 13:05:12 PAGE     8
+
+02EF 7480            427             mov a,#LCD_LN1
+02F1 31F9            428             acall lcd_cmd
+02F3 7402            429             mov a,#EX_i
+02F5 5115            430             acall lcd_dat
+02F7 512F            431             acall lcd_str
+02F9 9109            432             acall delay_1sec
+02FB 7F02            433             mov status,#RETRY
+02FD 22              434             ret
+02FE                 435     get_input_nxt:
+02FE E6              436             mov a,@r0
+02FF 5115            437             acall lcd_dat
+0301 08              438             inc r0
+0302 80A2            439             sjmp get_input_cnt
+0304                 440     get_input_lerr:
+0304 900309          441             mov dptr,#get_input_err1
+0307 80DF            442             sjmp get_input_retry
+0309                 443     get_input_err1:
+0309 20436F64        444     db " Code is small...", 0H
+030D 65206973                
+0311 20736D61                
+0315 6C6C2E2E                
+0319 2E00                    
+031B                 445     get_input_err:
+031B 20436F64        446     db      " Code too long...",0H
+031F 6520746F                
+0323 6F206C6F                
+0327 6E672E2E                
+032B 2E00                    
+                     447     
+032D                 448     chk:
+032D 7840            449             mov r0,#input
+032F                 450     chk_l2:
+032F E4              451             clr a
+0330 93              452             movc a,@a+dptr
+0331 86F0            453             mov b,@r0
+0333 B5F008          454             cjne a,b,chk_l1
+0336 A3              455             inc dptr
+0337 08              456             inc r0
+0338 D531F4          457             djnz count,chk_l2
+033B D202            458             setb is_ok
+033D 22              459             ret
+033E                 460     chk_l1:
+033E C202            461             clr is_ok
+0340 22              462             ret
+                     463     
+0341                 464     chk_newcode:
+0341 753104          465             mov count,#4
+0344 7840            466             mov r0,#input
+0346 7950            467             mov r1,#upass
+0348                 468     chk_newcode_l1:
+0348 E6              469             mov a,@r0
+0349 87F0            470             mov b,@r1
+034B B5F008          471             cjne a,b,chk_newcode_l2
+034E 08              472             inc r0
+034F 09              473             inc r1
+0350 D531F5          474             djnz count, chk_newcode_l1
+0353 D202            475             setb is_ok
+0355 22              476             ret
+0356                 477     chk_newcode_l2:
+0356 C202            478             clr is_ok
+0358 22              479             ret
+                     480     
+0359                 481     chk_12345:
+0359 31323334        482     db      "1234",0h
+035D 00                      
+                     483     
+A51 MACRO ASSEMBLER  LOCK                                                                 07/04/2009 13:05:12 PAGE     9
+
+035E                 484     chk_master:
+035E 31323334        485     db "1234567890",0h
+0362 35363738                
+0366 393000                  
+                     486     
+0369                 487     chk_upass:
+0369 34333231        488     db "4321",0h
+036D 00                      
+                     489     
+036E                 490     set_upass:
+036E 7401            491             mov a,#LCD_CLR
+0370 31F9            492             acall lcd_cmd
+0372 7480            493             mov a,#LCD_LN1
+0374 31F9            494             acall lcd_cmd
+0376 900127          495             mov dptr,#str_master
+0379 512F            496             acall lcd_str
+037B 74C0            497             mov a,#LCD_LN2
+037D 31F9            498             acall lcd_cmd
+037F 7400            499             mov a,#LOCK_i
+0381 5115            500             acall lcd_dat
+0383 743A            501             mov a,#':'
+0385 5115            502             acall lcd_dat
+0387 75300A          503             mov max,#10
+038A 519F            504             acall get_input
+038C BF0145          505             cjne status,#TRUE,set_upass_l1
+038F 75310A          506             mov count,#10
+0392 90035E          507             mov dptr,#chk_master
+0395 712D            508             acall chk
+0397 30023A          509             jnb is_ok,set_upass_l1
+039A                 510     set_upass_l4:
+039A 7401            511             mov a,#LCD_CLR
+039C 31F9            512             acall lcd_cmd
+039E 7480            513             mov a,#LCD_LN1
+03A0 31F9            514             acall lcd_cmd
+03A2 9003DA          515             mov dptr,#str_new
+03A5 512F            516             acall lcd_str
+03A7 74C0            517             mov a,#LCD_LN2
+03A9 31F9            518             acall lcd_cmd
+03AB 7400            519             mov a,#LOCK_i
+03AD 5115            520             acall lcd_dat
+03AF 743A            521             mov a,#':'
+03B1 5115            522             acall lcd_dat
+03B3 753004          523             mov max,#4
+03B6 519F            524             acall get_input
+03B8 BF0114          525             cjne status,#TRUE, set_upass_l5
+03BB 7401            526             mov a,#LCD_CLR
+03BD 31F9            527             acall lcd_cmd
+03BF 7403            528             mov a,#OK_i
+03C1 5115            529             acall lcd_dat
+03C3 9003E9          530             mov dptr,#str_saved
+03C6 512F            531             acall lcd_str
+03C8 D201            532             setb newcode
+03CA 71FA            533             acall copy_code
+03CC 9109            534             acall delay_1sec
+03CE 22              535             ret
+03CF                 536     set_upass_l5:
+03CF BF0207          537             cjne status,#RETRY,set_upass_l2
+03D2 80C6            538             sjmp set_upass_l4
+03D4                 539     set_upass_l1:
+03D4 BF0202          540             cjne status,#RETRY,set_upass_l2
+03D7 8095            541             sjmp set_upass
+03D9                 542     set_upass_l2:
+03D9 22              543             ret
+                     544     
+03DA                 545     str_new:
+03DA 456E7465        546     db "Enter new code", 0h
+A51 MACRO ASSEMBLER  LOCK                                                                 07/04/2009 13:05:12 PAGE    10
+
+03DE 72206E65                
+03E2 7720636F                
+03E6 646500                  
+03E9                 547     str_saved:
+03E9 4C6F636B        548     db "Lock code saved!", 0h
+03ED 20636F64                
+03F1 65207361                
+03F5 76656421                
+03F9 00                      
+                     549     
+03FA                 550     copy_code:
+03FA 7840            551             mov r0,#input
+03FC 7950            552             mov r1,#upass
+03FE 753105          553             mov count,#5
+0401                 554     copy_code_l1:
+0401 E6              555             mov a,@r0
+0402 F7              556             mov @r1,a
+0403 08              557             inc r0
+0404 09              558             inc r1
+0405 D531F9          559             djnz count, copy_code_l1
+0408 22              560             ret
+                     561     
+0409                 562     delay_1sec:
+0409 7CFA            563             mov delay,#250
+040B 5143            564             acall delayms
+040D 7CFA            565             mov delay,#250
+040F 5143            566             acall delayms
+0411 7CFA            567             mov delay,#250
+0413 5143            568             acall delayms
+0415 7CFA            569             mov delay,#250
+0417 5143            570             acall delayms
+0419 22              571             ret
+                     572     
+041A                 573     icons:
+041A 0E0A1F1F        574     db 0xe, 0xa, 0x1f, 0x1f, 0x1b, 0x1b, 0xe, 0x0, 0xe, 0x2, 0x1f, 0x1f, 0x1b, 0x1b, 0xe, 0x0, 
+                             0x1f, 0x1b, 0x1b, 0x1b, 0x1b, 0x1f, 0x1b, 0x1f, 0x0, 0x1, 0x3, 0x16, 0x1c, 0x8, 0x0, 0x0
+041E 1B1B0E00                
+0422 0E021F1F                
+0426 1B1B0E00                
+042A 1F1B1B1B                
+042E 1B1F1B1F                
+0432 00010316                
+0436 1C080000                
+                     575     
+                     576             end
+A51 MACRO ASSEMBLER  LOCK                                                                 07/04/2009 13:05:12 PAGE    11
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACTIVE . . . . . .  C ADDR   0188H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+CGBUILD. . . . . .  C ADDR   01E6H   A   
+CGBUILD_L1 . . . .  C ADDR   01F0H   A   
+CHK. . . . . . . .  C ADDR   032DH   A   
+CHK_12345. . . . .  C ADDR   0359H   A   
+CHK_E. . . . . . .  C ADDR   02D2H   A   
+CHK_KEY. . . . . .  C ADDR   02E0H   A   
+CHK_L1 . . . . . .  C ADDR   033EH   A   
+CHK_L2 . . . . . .  C ADDR   032FH   A   
+CHK_MASTER . . . .  C ADDR   035EH   A   
+CHK_NEWCODE. . . .  C ADDR   0341H   A   
+CHK_NEWCODE_L1 . .  C ADDR   0348H   A   
+CHK_NEWCODE_L2 . .  C ADDR   0356H   A   
+CHK_UPASS. . . . .  C ADDR   0369H   A   
+COL1 . . . . . . .  B ADDR   0090H.0 A   
+COL2 . . . . . . .  B ADDR   0090H.1 A   
+COL3 . . . . . . .  B ADDR   0090H.2 A   
+COPY_CODE. . . . .  C ADDR   03FAH   A   
+COPY_CODE_L1 . . .  C ADDR   0401H   A   
+COUNT. . . . . . .  N NUMB   0031H   A   
+D. . . . . . . . .  C ADDR   0245H   A   
+DELAY. . . . . . .    REG    R4          
+DELAYMS. . . . . .  C ADDR   0243H   A   
+DELAY_1SEC . . . .  C ADDR   0409H   A   
+EN . . . . . . . .  B ADDR   00B0H.7 A   
+EXIT . . . . . . .  N NUMB   0003H   A   
+EX_I . . . . . . .  N NUMB   0002H   A   
+FALSE. . . . . . .  N NUMB   0000H   A   
+GET_INPUT. . . . .  C ADDR   029FH   A   
+GET_INPUT_CNT. . .  C ADDR   02A6H   A   
+GET_INPUT_ERR. . .  C ADDR   031BH   A   
+GET_INPUT_ERR1 . .  C ADDR   0309H   A   
+GET_INPUT_L1 . . .  C ADDR   02B9H   A   
+GET_INPUT_LERR . .  C ADDR   0304H   A   
+GET_INPUT_NXT. . .  C ADDR   02FEH   A   
+GET_INPUT_RETRY. .  C ADDR   02E8H   A   
+GET_KEY. . . . . .  C ADDR   0250H   A   
+HOOK . . . . . . .  C ADDR   000DH   A   
+ICONS. . . . . . .  C ADDR   041AH   A   
+INACTIVE . . . . .  C ADDR   0156H   A   
+INACTIVE1. . . . .  C ADDR   015FH   A   
+INACTIVE2. . . . .  C ADDR   016CH   A   
+INACTIVE3. . . . .  C ADDR   017DH   A   
+INPUT. . . . . . .  N NUMB   0040H   A   
+ISKEY. . . . . . .  N NUMB   0000H   A   
+IS_OK. . . . . . .  N NUMB   0002H   A   
+JMP1 . . . . . . .  C ADDR   028FH   A   
+JMP2 . . . . . . .  C ADDR   0295H   A   
+JMP3 . . . . . . .  C ADDR   029BH   A   
+KEYPAD_INIT. . . .  C ADDR   024CH   A   
+KEYPORT. . . . . .  D ADDR   0090H   A   
+KEYVAL . . . . . .    REG    R6          
+LCD_CLR. . . . . .  N NUMB   0001H   A   
+LCD_CMD. . . . . .  C ADDR   01F9H   A   
+LCD_DAT. . . . . .  C ADDR   0215H   A   
+LCD_INIT . . . . .  C ADDR   01D1H   A   
+LCD_LN1. . . . . .  N NUMB   0080H   A   
+LCD_LN2. . . . . .  N NUMB   00C0H   A   
+LCD_PORT . . . . .  D ADDR   00B0H   A   
+A51 MACRO ASSEMBLER  LOCK                                                                 07/04/2009 13:05:12 PAGE    12
+
+LCD_RESET. . . . .  C ADDR   01A1H   A   
+LCD_STR. . . . . .  C ADDR   022FH   A   
+LCD_STR1 . . . . .  C ADDR   0239H   A   
+LCD_STR_END. . . .  C ADDR   0238H   A   
+LCD_STR_END1 . . .  C ADDR   0242H   A   
+LENGTH . . . . . .  N NUMB   0032H   A   
+LOCK . . . . . . .  B ADDR   0090H.3 A   
+LOCK_I . . . . . .  N NUMB   0000H   A   
+MAIN . . . . . . .  C ADDR   0029H   A   
+MAIN_1 . . . . . .  C ADDR   0115H   A   
+MAIN_2 . . . . . .  C ADDR   0055H   A   
+MAIN_3 . . . . . .  C ADDR   0062H   A   
+MAIN_4 . . . . . .  C ADDR   0064H   A   
+MAIN_5 . . . . . .  C ADDR   00AEH   A   
+MAIN_6 . . . . . .  C ADDR   0096H   A   
+MAIN_7 . . . . . .  C ADDR   00CEH   A   
+MAIN_8 . . . . . .  C ADDR   00CCH   A   
+MAX. . . . . . . .  N NUMB   0030H   A   
+NEWCODE. . . . . .  N NUMB   0001H   A   
+NEXT . . . . . . .  C ADDR   0263H   A   
+NEXT1. . . . . . .  C ADDR   026DH   A   
+NOKEY. . . . . . .  C ADDR   0278H   A   
+OK_I . . . . . . .  N NUMB   0003H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+PRE_MAIN . . . . .  C ADDR   001DH   A   
+READ . . . . . . .  C ADDR   0256H   A   
+RETRIES. . . . . .  N NUMB   0033H   A   
+RETRY. . . . . . .  N NUMB   0002H   A   
+RS . . . . . . . .  B ADDR   00B0H.5 A   
+SALAM. . . . . . .  C ADDR   0198H   A   
+SCAN . . . . . . .    REG    R5          
+SET_UPASS. . . . .  C ADDR   036EH   A   
+SET_UPASS_L1 . . .  C ADDR   03D4H   A   
+SET_UPASS_L2 . . .  C ADDR   03D9H   A   
+SET_UPASS_L4 . . .  C ADDR   039AH   A   
+SET_UPASS_L5 . . .  C ADDR   03CFH   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+STATUS . . . . . .    REG    R7          
+STR_BLOCKED. . . .  C ADDR   0144H   A   
+STR_ENTER. . . . .  C ADDR   0117H   A   
+STR_MASTER . . . .  C ADDR   0127H   A   
+STR_NEW. . . . . .  C ADDR   03DAH   A   
+STR_RETRY. . . . .  C ADDR   0138H   A   
+STR_SAVED. . . . .  C ADDR   03E9H   A   
+STR_UNBLOCKED. . .  C ADDR   014CH   A   
+TEMP . . . . . . .    REG    R3          
+TEST . . . . . . .  C ADDR   0006H   A   
+TRANSLATE. . . . .  C ADDR   0288H   A   
+TRUE . . . . . . .  N NUMB   0001H   A   
+UNLOCK_I . . . . .  N NUMB   0001H   A   
+UPASS. . . . . . .  N NUMB   0050H   A   
+VAR1 . . . . . . .    REG    R2          
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

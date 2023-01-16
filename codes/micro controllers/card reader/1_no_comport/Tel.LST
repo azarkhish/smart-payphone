@@ -1,0 +1,1362 @@
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE     1
+
+
+MACRO ASSEMBLER A51 V7.10
+OBJECT MODULE PLACED IN Tel.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE Tel.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;#include <defenition.H>
+  00A0          +1     2     FADDR                                                   EQU             0a0h            ; f
+                             ixed address for AT24Cxx EEPROMs
+  0000          +1     3     PADDR                                                   EQU             0               ; p
+                             rogrammable address (0..7)
+                +1     4     
+  REG           +1     5     index           EQU     r0              ; buffer pointer
+                +1     6     
+  001C          +1     7     kount                            data   01ch
+  0045          +1     8     temp                             DATA   45h   
+  004B          +1     9     addr_lo                          DATA   4bh             ; 2-byte address register
+  004C          +1    10     addr_hi                          DATA   4ch
+  004D          +1    11     dp_h                             DATA   4dh
+  004E          +1    12     dp_l                             DATA   4eh
+  004F          +1    13     zdata                            DATA   4fh
+                +1    14     
+  0092          +1    15     card_scl bit p1.2
+  0093          +1    16     card_sda bit p1.3
+                +1    17     
+  0096          +1    18     card_in bit  p1.6
+                +1    19     
+  0090          +1    20     e2p_scl bit p1.0
+  0091          +1    21     e2p_sda bit p1.1
+                +1    22     
+  00B4          +1    23     dsr bit p3.4
+  00B5          +1    24     dtr bit p3.5
+                +1    25     
+  0094          +1    26     led1  bit p1.4
+  0095          +1    27     led2  bit p1.5
+                +1    28     
+                      29     
+                      30     ;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                      31     ;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                      32        
+0000                  33                    ORG          0000H 
+                      34                          
+0000 020100           35                     LJMP          MAIN 
+                      36                    
+0003                  37                        ORG          003H  
+0003 32               38                             RETI 
+                      39                             
+000B                  40                             ORG 0BH
+000B 32               41                             RETI
+                      42                             
+0013                  43                             ORG          0013H 
+0013 32               44                             RETI
+                      45                             
+001B                  46                             ORG          01BH
+001B 32               47                             RETI
+                      48     
+002B                  49                             ORG          02BH
+002B 32               50                             RETI
+                      51     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+0100                  52     org 100h                                      
+0100                  53     MAIN:   
+                      54         ;----------------Preset----------------- 
+0100 D294             55              setb led1
+0102 D295             56              setb led2
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE     2
+
+                      57     
+0104                  58         blink_led1:
+0104 D295             59             setb led2
+0106 B294             60              cpl led1
+0108 1201B1           61        lcall long_delay
+010B 2096F6           62        jb card_in,blink_led1
+                      63       
+010E C294             64        clr led1
+0110 1201B1           65               lcall long_delay
+                      66     
+0113 754C17           67                     mov addr_hi,#017h               
+0116 754B70           68                     mov addr_lo,#070h
+                      69     
+0119                  70     read_next_byte:         
+0119 1203CC           71                     lcall e2p_read_e2p_byte
+011C F54F             72                      mov zdata,a
+011E 12034E           73                     lcall card_write_to_e2p
+0121 1205D8           74                     lcall inc_e2p_counter
+0124 E54C             75                     mov a,addr_hi
+0126 B439F0           76                     cjne a,#039h,read_next_byte
+                      77     
+0129 754CFF           78                     mov addr_hi,#0ffh               
+012C 754BF0           79                     mov addr_lo,#0f0h
+012F 754F10           80                     mov zdata,#10h
+0132 12034E           81                     lcall card_write_to_e2p
+0135 754CFF           82                     mov addr_hi,#0ffh               
+0138 754BF1           83                     mov addr_lo,#0f1h
+013B 754F11           84                     mov zdata,#11h
+013E 12034E           85                     lcall card_write_to_e2p
+0141 754CFF           86                     mov addr_hi,#0ffh               
+0144 754BF2           87                     mov addr_lo,#0f2h
+0147 754F12           88                     mov zdata,#12h
+014A 12034E           89                     lcall card_write_to_e2p
+014D 754CFF           90                     mov addr_hi,#0ffh               
+0150 754BF3           91                     mov addr_lo,#0f3h
+0153 754F13           92                     mov zdata,#13h
+0156 12034E           93                     lcall card_write_to_e2p
+                      94     
+                      95     
+0159 754CFF           96                     mov addr_hi,#0ffh               
+015C 754BF4           97                     mov addr_lo,#0f4h
+015F 754F01           98                     mov zdata,#01h
+0162 12034E           99                     lcall card_write_to_e2p
+0165 754CFF          100                     mov addr_hi,#0ffh               
+0168 754BF5          101                     mov addr_lo,#0f5h
+016B 754F02          102                     mov zdata,#02h
+016E 12034E          103                     lcall card_write_to_e2p
+0171 754CFF          104                     mov addr_hi,#0ffh               
+0174 754BF6          105                     mov addr_lo,#0f6h
+0177 754F03          106                     mov zdata,#03h
+017A 12034E          107                     lcall card_write_to_e2p
+017D 754CFF          108                     mov addr_hi,#0ffh               
+0180 754BF7          109                     mov addr_lo,#0f7h
+0183 754F04          110                     mov zdata,#04h
+0186 12034E          111                     lcall card_write_to_e2p
+                     112     
+                     113     
+0189 754CFF          114                     mov addr_hi,#0ffh               
+018C 754BF8          115                     mov addr_lo,#0f8h
+018F 754F00          116                     mov zdata,#00h
+0192 12034E          117                     lcall card_write_to_e2p
+                     118     
+                     119     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+0195                 120        blink_led2:
+0195 D294            121        setb led1
+0197 B295            122        cpl led2
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE     3
+
+0199 1201B1          123        lcall long_delay
+019C 3096F6          124        jnb card_in,blink_led2
+019F 2104            125        jmp blink_led1
+                     126     
+                     127     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+01A1                 128     some_error:
+01A1 D294            129     setb led1
+01A3 D295            130     setb led2
+01A5                 131     blink_double:
+01A5 B294            132        cpl led1
+01A7 B295            133        cpl led2
+01A9 1201B1          134        lcall long_delay
+01AC 3096F6          135        jnb card_in,blink_double
+01AF 2104            136        jmp blink_led1
+                     137     
+                     138     ;-------------------------------------
+01B1                 139     long_delay:
+01B1 7BFF            140         mov r3,#0ffh
+01B3                 141      long2: 
+01B3 7AFF            142             mov r2,#0ffh
+01B5                 143      long1: 
+01B5 00              144             nop
+01B6 00              145             nop
+01B7 00              146             nop
+01B8 DAFB            147             djnz r2,long1
+01BA 00              148             nop
+01BB 00              149             nop
+01BC 00              150             nop
+01BD DBF4            151             djnz r3,long2
+01BF 22              152         ret   
+                     153     ;-------------------------------------    
+                     154     ;------------------------------------------------
+                     155     ;---------------card eeprom functions-----------------
+                     156     ;------------------------------------------------
+                     157     ;------------------------------
+                     158     ;----------------------------------------------------
+01C0                 159     card_read_e2p_byte:
+01C0 C001            160     push 01
+01C2 79FF            161     mov r1,#255
+01C4                 162     card_zewd_1:
+01C4 7400            163                     mov a,#PADDR
+01C6 120285          164                     lcall card_read_random
+01C9 5006            165                     jnc card_zewd_3         
+01CB D9F7            166                     djnz r1,card_zewd_1
+01CD D001            167      pop 01
+01CF 80D0            168      jmp some_error
+01D1                 169     card_zewd_3:
+01D1 D001            170     pop 01
+01D3 22              171     ret
+                     172     ;----------------------------------------------------
+                     173     
+01D4                 174     card_write_block:
+01D4 C000            175             push 00
+01D6 C001            176             push 01
+01D8 751C80          177             mov KOUNT,#128
+                     178             ; Write from one byte to one page of data to an AT24Cxx.
+                     179             ; Called with programmable address in A, address of first byte
+                     180             ; in register pair ADDR_HI:ADDR_LO, data in BUFFER, byte count
+                     181             ; in register KOUNT.
+                     182             ; Does not wait for write cycle to complete.
+                     183             ; Returns CY set to indicate that the bus is not available
+                     184             ; or that the addressed device failed to acknowledge.
+                     185             ; Destroys A, KOUNT, INDEX.
+                     186     
+01DB 1202B3          187                     lcall   card_start
+01DE 4029            188                     jc      card_x38                ; abort if bus not available
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE     4
+
+                     189     
+01E0 23              190                     rl      a               ; programmable address to bits 3:1
+01E1 44A0            191                     orl     a, #FADDR       ; add fixed address
+01E3 C2E0            192                     clr     acc.0           ; specify write operation
+01E5 1202E2          193                     lcall   card_shout              ; send device address
+01E8 401C            194                     jc      card_x37                ; abort if no acknowledge
+                     195     
+01EA E54C            196                     mov     a, addr_hi      ; send high byte of address
+01EC 1202E2          197                     lcall   card_shout              ;
+01EF 4015            198                     jc      card_x37                ; abort if no acknowledge
+                     199     
+01F1 E54B            200                     mov     a, addr_lo      ; send low byte of address
+01F3 1202E2          201                     lcall   card_shout              ;
+01F6 400E            202                     jc      card_x37                ; abort if no acknowledge
+                     203     
+01F8 900000          204                     mov     dptr, #00h;buffer       ; point to buffer
+01FB                 205             card_x36:
+                     206     
+01FB E0              207                     movx    a, @dptr        ; get data
+01FC 1202E2          208                     lcall   card_shout              ; send data
+01FF 4005            209                     jc      card_x37                ; abort if no acknowledge
+                     210     
+0201 A3              211                     inc     dptr            ; advance buffer pointer
+0202 D51CF6          212                     djnz    kount, card_x36 ; next byte
+0205 C3              213                     clr     c               ; clear error flag
+0206                 214             card_x37:
+0206 1202D2          215                     lcall   card_stop
+0209                 216             card_x38:
+0209 D001            217     pop 01
+020B D000            218     pop 00
+020D 22              219     ret
+                     220     ;-----------------------------------------
+020E                 221     card_write_page:
+                     222             
+020E                 223             card_x63:
+020E 7400            224                     mov     a, #PADDR       ; programmable address
+0210 31D4            225                     call    card_write_block        ; try to write
+0212 5003            226                     jnc     card_x64                ; jump if write OK
+                     227     
+0214 D5F0F7          228                     djnz    b, card_x63             ; try again
+0217                 229             card_x64:
+0217 22              230     ret
+                     231     ;-----------------------------------------------------
+0218                 232     card_read_page:
+0218 75F096          233     mov b,#150
+021B                 234             card_x72:
+021B 7400            235                     mov     a, #PADDR       ; programmable address
+021D 5125            236                     call    card_read_block ; try to read
+021F 5003            237                     jnc     card_x74                ; jump if read OK
+                     238     
+0221 D5F0F7          239                     djnz    b, card_x72             ; try again
+0224                 240             card_x74:
+                     241     
+0224 22              242     ret
+                     243     ;---------------------------------------------------
+                     244     
+0225                 245     card_read_block:
+0225 C000            246               push 00
+0227 C001            247               push 01
+0229 751C80          248               mov KOUNT,#128
+                     249             ; Read from one byte to one page of data from an AT24Cxx.
+                     250             ; Performs a Random Read which is extended into a Sequential Read
+                     251             ; when more than one byte is read. Called with programmable address
+                     252             ; in A, address of first byte in register pair ADDR_HI:ADDR_LO,
+                     253             ; byte count in register KOUNT.
+                     254             ; Returns data in BUFFER. Returns CY set to indicate that the bus is
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE     5
+
+                     255             ; not available or that the addressed device failed to acknowledge.
+                     256             ; Destroys A, KOUNT, INDEX.
+                     257     
+                     258                     ; Send dummy write command to address first byte.
+                     259     
+022C 51B3            260                     call    card_start
+022E 4036            261                     jc      card_x35                ; abort if bus not available
+                     262     
+0230 23              263                     rl      a               ; programmable address to bits 3:1
+0231 44A0            264                     orl     a, #FADDR       ; add fixed address
+0233 F8              265                     mov     index, a        ; save copy of device address
+0234 C2E0            266                     clr     acc.0           ; specify write operation
+0236 51E2            267                     call    card_shout              ; send device address
+0238 402A            268                     jc      card_x34                ; abort if no acknowledge
+                     269     
+023A E54C            270                     mov     a, addr_hi      ; send high byte of address
+023C 51E2            271                     call    card_shout              ;
+023E 4024            272                     jc      card_x34                ; abort if no acknowledge
+                     273     
+0240 E54B            274                     mov     a, addr_lo      ; send low byte of address
+0242 51E2            275                     call    card_shout              ;
+0244 401E            276                     jc      card_x34                ; abort if no acknowledge
+                     277     
+                     278                     ; Send read command and receive data.
+                     279     
+0246 51B3            280                     call    card_start              ; second start for read
+0248 401A            281                     jc      card_x34                ; abort if bus not available
+                     282     
+024A E8              283                     mov     a, index        ; get device address
+024B D2E0            284                     setb    acc.0           ; specify read operation
+024D 51E2            285                     call    card_shout              ; send device address
+024F 4013            286                     jc      card_x34                ; abort if no acknowledge
+                     287     
+                     288             ;       mov     dptr, #00h;buffer       ; point to buffer
+0251                 289             card_x31:
+0251 7116            290                     call    card_shin               ; receive data byte
+0253 F0              291                     movx    @dptr, a        ; save data
+                     292     
+0254 A91C            293                        mov r1,kount
+0256 B90104          294                     cjne    r1, #1, card_x32        ; jump if not last byte
+0259 713F            295                     call    card_NAK                ; do not acknowledge last byte
+025B 8006            296                     jmp     card_x33                ; done
+025D                 297             card_x32:
+                     298     
+025D 7130            299                 call        card_ACKK
+025F A3              300                     inc     dptr            ; advance buffer pointer
+0260 D51CEE          301                     djnz    kount, card_x31 ; next byte
+0263                 302             card_x33:
+0263 C3              303                     clr     c               ; clear error flag
+0264                 304             card_x34:
+0264 51D2            305                     call    card_stop
+0266                 306             card_x35:
+0266 D001            307             pop 01
+0268 D000            308             pop 00
+026A 22              309                     ret
+                     310     ;--------------------------------------------
+026B                 311     card_read_current:
+                     312             ; AT24Cxx Current Address Read function.
+                     313             ; Called with programmable address in A. Returns data in A.
+                     314             ; Returns CY set to indicate that the bus is not available
+                     315             ; or that the addressed device failed to acknowledge.
+                     316     
+026B 1202B3          317                     lcall   card_start
+026E 4014            318                     jc      card_x45                ; abort if bus not available
+                     319     
+0270 23              320                     rl      a               ; programmable address to bits 3:1
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE     6
+
+0271 44A0            321                     orl     a, #FADDR       ; add fixed address
+0273 D2E0            322                     setb    acc.0           ; specify read operation
+0275 1202E2          323                     lcall   card_shout              ; send device address
+0278 4007            324                     jc      card_x44                ; abort if no acknowledge
+                     325     
+027A 120316          326                     lcall   card_shin               ; receive data byte
+027D 12033F          327                     lcall   card_NAK                ; do not acknowledge byte
+0280 C3              328                     clr     c               ; clear error flag
+0281                 329             card_x44:
+0281 1202D2          330                     lcall   card_stop
+0284                 331             card_x45:
+0284 22              332                     ret
+                     333     
+                     334     ;----------------------------
+0285                 335     card_read_random:
+                     336             ; AT24Cxx Random Read function.
+                     337             ; Called with programmable address in A, byte address in
+                     338             ; register pair ADDR_HI:ADDR_LO. Returns data in A.
+                     339             ; Returns CY set to indicate that the bus is not available
+                     340             ; or that the addressed device failed to acknowledge.
+                     341     
+0285 C0F0            342                     push    b
+0287 F5F0            343                     mov     b, a            ; save copy of programmable address
+                     344     
+                     345                     ; Send dummy write command to set internal address.
+                     346     
+0289 1202B3          347                     lcall   card_start
+028C 4022            348                     jc      card_x47                ; abort if bus not available
+                     349     
+028E 23              350                     rl      a               ; programmable address to bits 3:1
+028F 44A0            351                     orl     a, #FADDR       ; add fixed address
+0291 C2E0            352                     clr     acc.0           ; specify write operation
+0293 1202E2          353                     lcall   card_shout              ; send device address
+0296 4015            354                     jc      card_x46                ; abort if no acknowledge
+                     355     
+0298 E54C            356                     mov     a, addr_hi      ; send high byte of address
+029A 1202E2          357                     lcall   card_shout              ;
+029D 400E            358                     jc      card_x46                ; abort if no acknowledge
+                     359     
+029F E54B            360                     mov     a, addr_lo      ; send low byte of address
+02A1 1202E2          361                     lcall   card_shout              ;
+02A4 4007            362                     jc      card_x46                ; abort if no acknowledge
+                     363     
+                     364                     ; Call Current Address Read function.
+                     365     
+02A6 E5F0            366                     mov     a, b            ; get programmable address
+02A8 12026B          367                     lcall   card_read_current
+02AB 8003            368                     jmp     card_x47                ; exit
+02AD                 369             card_x46:
+02AD 1202D2          370                     lcall   card_stop
+02B0                 371             card_x47:
+02B0 D0F0            372                     pop     b
+02B2 22              373                     ret
+                     374     ;----------------------------
+                     375     ;----------------------------
+                     376     
+02B3                 377     card_start:
+                     378     
+                     379             ; Send START, defined as high-to-low SDA with SCL high.
+                     380             ; Return with SCL, SDA low.
+                     381             ; Returns CY set if bus is not available.
+                     382     
+02B3 D293            383                     setb    card_SDA
+02B5 D292            384                     setb    card_SCL
+                     385     
+02B7 00              386                     nop                     ; enforce hold delay
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE     7
+
+02B8 3092FD          387     card_hh_7: jnb card_SCL,card_hh_7
+                     388                                     ;
+02BB 00              389                     nop                     ;
+02BC 00              390                     nop
+                     391                     ; Verify bus available.
+                     392     
+02BD 309310          393                     jnb     card_SDA, card_x40      ; jump if not high
+02C0 30920D          394                     jnb     card_SCL, card_x40      ; jump if not high
+                     395     
+02C3 00              396                     nop                     ; enforce setup delay and cycle delay
+02C4 C293            397                     clr     card_SDA
+02C6 00              398                     nop                     ; enforce hold delay
+02C7 00              399                     nop                     ;
+02C8 00              400                     nop                     ;
+02C9 00              401                     nop                     ;
+02CA 00              402                     nop                     ;
+02CB C292            403                     clr     card_SCL
+                     404     
+02CD C3              405                     clr     c               ; clear error flag
+02CE 8001            406                     jmp     card_x41
+02D0                 407             card_x40:
+02D0 D3              408                     setb    c               ; set error flag
+02D1                 409             card_x41:
+02D1 22              410                     ret
+                     411     ;----------------------------
+02D2                 412     card_stop:
+                     413     
+                     414             ; Send STOP, defined as low-to-high SDA with SCL high.
+                     415             ; SCL expected low on entry. Return with SCL, SDA high.
+                     416     
+02D2 C293            417                     clr     card_SDA
+02D4 00              418                     nop                     ; enforce SCL low and data setup
+02D5 00              419                     nop
+02D6 D292            420                     setb    card_SCL
+02D8 3092FD          421     card_hh_1: jnb card_SCL,card_hh_1
+02DB 00              422                     nop                     ; enforce setup delay
+02DC 00              423                     nop                     ;
+02DD 00              424                     nop                     ;
+02DE 00              425                     nop                     ;
+                     426                     ;nop                    ;
+02DF D293            427                     setb    card_SDA
+02E1 22              428                     ret
+                     429     ;----------------------------
+02E2                 430     card_shout:
+                     431     
+                     432             ; Shift out a byte to the AT24Cxx, most significant bit first.
+                     433             ; SCL, SDA expected low on entry. Return with SCL low.
+                     434             ; Called with data to send in A.
+                     435             ; Returns CY set to indicate failure by slave to acknowledge.
+                     436             ; Destroys A.
+                     437     
+02E2 C0F0            438                     push    b
+02E4 75F008          439                     mov     b, #8           ; bit counter
+02E7                 440             card_x42:
+02E7 33              441                     rlc     a               ; move bit into CY
+02E8 9293            442                     mov     card_SDA, c             ; output bit
+02EA 00              443             nop
+02EB 00              444             nop
+02EC 00              445             nop
+02ED 00              446                     nop                     ; enforce SCL low and data setup
+02EE D292            447                     setb    card_SCL                ; raise clock
+02F0 00              448                     nop                     ; enforce SCL high
+02F1 00              449                     nop                     ;
+02F2 00              450                     nop                     ;
+02F3 00              451                     nop                     ;
+02F4 3092FD          452     card_hh_2: jnb card_SCL,card_hh_2
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE     8
+
+02F7 00              453     nop
+02F8 00              454     nop
+02F9 C292            455                     clr     card_SCL                ; drop clock
+02FB D5F0E9          456                     djnz    b, card_x42             ; next bit
+                     457     
+02FE D293            458                     setb    card_SDA                ; release SDA for ACK
+0300 00              459                     nop                     ; enforce SCL low and tAA
+0301 00              460                     nop                     ;
+0302 D292            461             setb    card_SCL                ; raise ACK clock
+0304 3092FD          462     card_hh_3: jnb card_SCL,card_hh_3
+                     463     
+0307 A293            464                     mov     c, card_SDA             ; get ACK bit
+0309 C292            465                     clr     card_SCL                ; drop ACK clock
+030B 00              466                     nop                     ; enforce SCL high
+030C 00              467                     nop                     ;
+030D 00              468                     nop                     ;
+030E 00              469                     nop                     ;
+030F 00              470                     nop                     ; enforce SCL high
+0310 00              471                     nop                     ;
+0311 00              472                     nop                     ;
+0312 00              473                     nop                     ;
+                     474     
+0313 D0F0            475                     pop     b
+0315 22              476                     ret
+                     477     ;----------------------------
+0316                 478     card_shin:
+                     479     
+                     480             ; Shift in a byte from the AT24Cxx, most significant bit first.
+                     481             ; SCL expected low on entry. Return with SCL low.
+                     482             ; Returns received data byte in A.
+                     483     
+0316 D293            484                     setb    card_SDA                ; make SDA an input
+                     485     
+0318 C0F0            486                     push    b
+031A 75F008          487                     mov     b, #8           ; bit count
+031D                 488             card_x43:
+031D 00              489                     nop                     ; enforce SCL low and data setup
+031E 00              490                     nop                     ;
+031F 00              491                     nop                     ;
+0320 D292            492                     setb    card_SCL                ; raise clock
+0322 3092FD          493     card_hh_6: jnb card_SCL,card_hh_6
+                     494     
+                     495     ;               nop                     ; enforce SCL high
+                     496     ;               nop                     ;
+0325 A293            497                     mov     c, card_SDA             ; input bit
+0327 33              498                     rlc     a               ; move bit into byte
+0328 C292            499                     clr     card_SCL                ; drop clock
+032A D5F0F0          500                     djnz    b, card_x43             ; next bit
+                     501     
+032D D0F0            502                     pop     b
+032F 22              503                     ret
+                     504     ;----------------------------
+0330                 505     card_ACKK:
+                     506     
+                     507             ; Clock out an acknowledge bit (low).
+                     508             ; SCL expected low on entry. Return with SCL, SDA low.
+                     509     
+0330 C293            510                     clr     card_SDA                ; ACK bit
+0332 00              511                     nop                     ; enforce SCL low and data setup
+                     512     ;               nop                     ;
+0333 D292            513                     setb    card_SCL                ; raise clock
+0335 3092FD          514     card_hh_4: jnb card_SCL,card_hh_4
+                     515     
+0338 00              516                     nop                     ; enforce SCL high
+0339 00              517                     nop                     ;
+033A 00              518                     nop                     ;
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE     9
+
+033B 00              519                     nop                     ;
+033C C292            520                     clr     card_SCL                ; drop clock
+033E 22              521                     ret
+                     522     ;----------------------------
+033F                 523     card_NAK:
+                     524     
+                     525             ; Clock out a negative acknowledge bit (high).
+                     526             ; SCL expected low on entry. Return with SCL low, SDA high.
+                     527     
+033F D293            528                     setb    card_SDA                ; NAK bit
+0341 00              529                     nop                     ; enforce SCL low and data setup
+                     530     ;               nop                     ;
+0342 D292            531                     setb    card_SCL                ; raise clock
+0344 3092FD          532     card_hh_5: jnb card_SCL,card_hh_5
+                     533     
+0347 00              534                     nop                     ; enforce SCL high
+0348 00              535                     nop                     ;
+0349 00              536                     nop                     ;
+034A 00              537                     nop                     ;
+034B C292            538                     clr     card_SCL                ; drop clock
+034D 22              539                     ret
+                     540     ;----------------------------
+                     541     ;----------------------------
+034E                 542     card_write_to_e2p:
+034E C0F0            543     push b
+0350 75F0FF          544     mov b,#255 ;retry count
+0353                 545     card_kyf_3:     
+0353 12038D          546             lcall card_write_zdata
+0356 5007            547             jnc card_kyf_2
+0358 D5F0F8          548             djnz b,card_kyf_3
+035B D0F0            549     pop b
+035D 21A1            550     jmp some_error
+035F                 551     card_kyf_2:
+035F D0F0            552     pop b
+0361 22              553     ret
+                     554     ;----------------------------
+                     555     
+                     556     ;----------------------------
+0362                 557     card_write_byte:
+                     558             ; AT24Cxx Byte Write function.
+                     559             ; Called with programmable address in A, byte address in
+                     560             ; register pair ADDR_HI:ADDR_LO, data in register ZDATA.
+                     561             ; Does not wait for write cycle to complete.
+                     562             ; Returns CY set to indicate that the bus is not available
+                     563             ; or that the addressed device failed to acknowledge.
+                     564             ; Destroys A.
+                     565     
+0362 1202B3          566                     lcall   card_start
+0365 4025            567                     jc      card_sx49               ; abort if bus not available
+0367 7400            568                     mov a ,#PADDR
+0369 23              569                     rl      a               ; programmable address to bits 3:1
+036A 44A0            570                     orl     a, #FADDR       ; add fixed address
+036C C2E0            571                     clr     acc.0           ; specify write operation
+036E 1202E2          572                     lcall   card_shout              ; send device address
+0371 4016            573                     jc      card_sx48               ; abort if no acknowledge
+                     574     
+0373 E54C            575                     mov     a, addr_hi      ; send high byte of address
+0375 1202E2          576                     lcall   card_shout              ;
+0378 400F            577                     jc      card_sx48               ; abort if no acknowledge
+                     578     
+037A E54B            579                     mov     a, addr_lo      ; send low byte of address
+037C 1202E2          580                     lcall   card_shout              ;
+037F 4008            581                     jc      card_sx48               ; abort if no acknowledge
+                     582     
+0381 E54F            583                     mov     a,zdata ; get data
+                     584                     
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE    10
+
+0383 1202E2          585                     lcall   card_shout              ; send data
+0386 4001            586                     jc      card_sx48               ; abort if no acknowledge
+                     587     
+0388 C3              588                     clr     c               ; clear error flag
+0389                 589             card_sx48:
+0389 1202D2          590                     lcall   card_stop
+038C                 591             card_sx49:
+038C 22              592                     ret
+                     593     ;----------------------------
+038D                 594     card_write_zdata:
+                     595             ; AT24Cxx Byte Write function.
+                     596             ; Called with programmable address in A, byte address in
+                     597             ; register pair ADDR_HI:ADDR_LO, data in register XDATA.
+                     598             ; Does not wait for write cycle to complete.
+                     599             ; Returns CY set to indicate that the bus is not available
+                     600             ; or that the addressed device failed to acknowledge.
+                     601             ; Destroys A.
+                     602     
+038D 1202B3          603                     lcall   card_start
+0390 4025            604                     jc      card_mx49               ; abort if bus not available
+0392 7400            605                     mov a ,#PADDR
+0394 23              606                     rl      a               ; programmable address to bits 3:1
+0395 44A0            607                     orl     a, #FADDR       ; add fixed address
+0397 C2E0            608                     clr     acc.0           ; specify write operation
+0399 1202E2          609                     lcall   card_shout              ; send device address
+039C 4016            610                     jc      card_mx48               ; abort if no acknowledge
+                     611     
+039E E54C            612                     mov     a, addr_hi      ; send high byte of address
+03A0 1202E2          613                     lcall   card_shout              ;
+03A3 400F            614                     jc      card_mx48               ; abort if no acknowledge
+                     615     
+03A5 E54B            616                     mov     a, addr_lo      ; send low byte of address
+03A7 1202E2          617                     lcall   card_shout              ;
+03AA 4008            618                     jc      card_mx48               ; abort if no acknowledge
+                     619     
+03AC E54F            620                     mov     a,zdata ; get data
+03AE 1202E2          621                     lcall   card_shout              ; send data
+03B1 4001            622                     jc      card_mx48               ; abort if no acknowledge
+                     623     
+03B3 C3              624                     clr     c               ; clear error flag
+03B4                 625             card_mx48:
+03B4 1202D2          626                     lcall   card_stop
+03B7                 627             card_mx49:
+03B7 22              628                     ret
+                     629     ;-------------------------------------
+                     630     ;----------------------------
+                     631     ;---------------------------------------------------------------
+03B8                 632     card_save_to_e2p:
+                     633     
+03B8 C0F0            634     push b
+03BA                 635     card_kf_1:
+03BA 75F0FF          636             mov b,#255 ;retry count
+03BD                 637     card_kf_3:      
+03BD 120362          638             lcall card_write_byte
+03C0 5007            639             jnc card_kf_2
+03C2 D5F0F8          640             djnz b,card_kf_3
+03C5 D0F0            641     pop b
+03C7 21A1            642     jmp some_error
+03C9                 643     card_kf_2:
+03C9 D0F0            644     pop b
+03CB 22              645     ret
+                     646     
+                     647     ;------------------------------------------------
+                     648     ;---------------main e2p eeprom functions-----------------
+                     649     ;------------------------------------------------
+                     650     ;------------------------------
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE    11
+
+                     651     ;----------------------------------------------------
+03CC                 652     e2p_read_e2p_byte:
+03CC C001            653     push 01
+03CE 79FF            654     mov r1,#255
+03D0                 655     e2p_zewd_1:
+03D0 7400            656                     mov a,#PADDR
+03D2 120491          657                     lcall e2p_read_random
+03D5 5006            658                     jnc e2p_zewd_3         
+03D7 D9F7            659                     djnz r1,e2p_zewd_1
+03D9 D001            660     pop 01
+03DB 21A1            661     jmp some_error
+03DD                 662     e2p_zewd_3:
+03DD D001            663     pop 01
+03DF 22              664     ret
+                     665     ;----------------------------------------------------
+                     666     
+03E0                 667     e2p_write_block:
+03E0 C000            668             push 00
+03E2 C001            669             push 01
+03E4 751C80          670             mov KOUNT,#128
+                     671             ; Write from one byte to one page of data to an AT24Cxx.
+                     672             ; Called with programmable address in A, address of first byte
+                     673             ; in register pair ADDR_HI:ADDR_LO, data in BUFFER, byte count
+                     674             ; in register KOUNT.
+                     675             ; Does not wait for write cycle to complete.
+                     676             ; Returns CY set to indicate that the bus is not available
+                     677             ; or that the addressed device failed to acknowledge.
+                     678             ; Destroys A, KOUNT, INDEX.
+                     679     
+03E7 1204BF          680                     lcall   e2p_start
+03EA 4029            681                     jc      e2p_x38         ; abort if bus not available
+                     682     
+03EC 23              683                     rl      a               ; programmable address to bits 3:1
+03ED 44A0            684                     orl     a, #FADDR       ; add fixed address
+03EF C2E0            685                     clr     acc.0           ; specify write operation
+03F1 1204EE          686                     lcall   e2p_shout               ; send device address
+03F4 401C            687                     jc      e2p_x37         ; abort if no acknowledge
+                     688     
+03F6 E54C            689                     mov     a, addr_hi      ; send high byte of address
+03F8 1204EE          690                     lcall   e2p_shout               ;
+03FB 4015            691                     jc      e2p_x37         ; abort if no acknowledge
+                     692     
+03FD E54B            693                     mov     a, addr_lo      ; send low byte of address
+03FF 1204EE          694                     lcall   e2p_shout               ;
+0402 400E            695                     jc      e2p_x37         ; abort if no acknowledge
+                     696     
+0404 900000          697                     mov     dptr, #00h;buffer       ; point to buffer
+0407                 698             e2p_x36:
+                     699     
+0407 E0              700                     movx    a, @dptr        ; get data
+0408 1204EE          701                     lcall   e2p_shout               ; send data
+040B 4005            702                     jc      e2p_x37         ; abort if no acknowledge
+                     703     
+040D A3              704                     inc     dptr            ; advance buffer pointer
+040E D51CF6          705                     djnz    kount, e2p_x36  ; next byte
+0411 C3              706                     clr     c               ; clear error flag
+0412                 707             e2p_x37:
+0412 1204DE          708                     lcall   e2p_stop
+0415                 709             e2p_x38:
+0415 D001            710     pop 01
+0417 D000            711     pop 00
+0419 22              712     ret
+                     713     ;-----------------------------------------
+041A                 714     e2p_write_page:
+                     715             
+041A                 716             e2p_x63:
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE    12
+
+041A 7400            717                     mov     a, #PADDR       ; programmable address
+041C 71E0            718                     call    e2p_write_block ; try to write
+041E 5003            719                     jnc     e2p_x64         ; jump if write OK
+                     720     
+0420 D5F0F7          721                     djnz    b, e2p_x63              ; try again
+0423                 722             e2p_x64:
+0423 22              723     ret
+                     724     ;-----------------------------------------------------
+0424                 725     e2p_read_page:
+0424 75F096          726     mov b,#150
+0427                 727             e2p_x72:
+0427 7400            728                     mov     a, #PADDR       ; programmable address
+0429 9131            729                     call    e2p_read_block  ; try to read
+042B 5003            730                     jnc     e2p_x74         ; jump if read OK
+                     731     
+042D D5F0F7          732                     djnz    b, e2p_x72              ; try again
+0430                 733             e2p_x74:
+                     734     
+0430 22              735     ret
+                     736     ;---------------------------------------------------
+                     737     
+0431                 738     e2p_read_block:
+0431 C000            739               push 00
+0433 C001            740               push 01
+0435 751C80          741               mov KOUNT,#128
+                     742             ; Read from one byte to one page of data from an AT24Cxx.
+                     743             ; Performs a Random Read which is extended into a Sequential Read
+                     744             ; when more than one byte is read. Called with programmable address
+                     745             ; in A, address of first byte in register pair ADDR_HI:ADDR_LO,
+                     746             ; byte count in register KOUNT.
+                     747             ; Returns data in BUFFER. Returns CY set to indicate that the bus is
+                     748             ; not available or that the addressed device failed to acknowledge.
+                     749             ; Destroys A, KOUNT, INDEX.
+                     750     
+                     751                     ; Send dummy write command to address first byte.
+                     752     
+0438 91BF            753                     call    e2p_start
+043A 4036            754                     jc      e2p_x35         ; abort if bus not available
+                     755     
+043C 23              756                     rl      a               ; programmable address to bits 3:1
+043D 44A0            757                     orl     a, #FADDR       ; add fixed address
+043F F8              758                     mov     index, a        ; save copy of device address
+0440 C2E0            759                     clr     acc.0           ; specify write operation
+0442 91EE            760                     call    e2p_shout               ; send device address
+0444 402A            761                     jc      e2p_x34         ; abort if no acknowledge
+                     762     
+0446 E54C            763                     mov     a, addr_hi      ; send high byte of address
+0448 91EE            764                     call    e2p_shout               ;
+044A 4024            765                     jc      e2p_x34         ; abort if no acknowledge
+                     766     
+044C E54B            767                     mov     a, addr_lo      ; send low byte of address
+044E 91EE            768                     call    e2p_shout               ;
+0450 401E            769                     jc      e2p_x34         ; abort if no acknowledge
+                     770     
+                     771                     ; Send read command and receive data.
+                     772     
+0452 91BF            773                     call    e2p_start               ; second start for read
+0454 401A            774                     jc      e2p_x34         ; abort if bus not available
+                     775     
+0456 E8              776                     mov     a, index        ; get device address
+0457 D2E0            777                     setb    acc.0           ; specify read operation
+0459 91EE            778                     call    e2p_shout               ; send device address
+045B 4013            779                     jc      e2p_x34         ; abort if no acknowledge
+                     780     
+                     781             ;       mov     dptr, #00h;buffer       ; point to buffer
+045D                 782             e2p_x31:
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE    13
+
+045D B122            783                     call    e2p_shin                ; receive data byte
+045F F0              784                     movx    @dptr, a        ; save data
+                     785     
+0460 A91C            786                        mov r1,kount
+0462 B90104          787                     cjne    r1, #1, e2p_x32 ; jump if not last byte
+0465 B14B            788                     call    e2p_NAK         ; do not acknowledge last byte
+0467 8006            789                     jmp     e2p_x33         ; done
+0469                 790             e2p_x32:
+                     791     
+0469 B13C            792                 call        e2p_ACKK
+046B A3              793                     inc     dptr            ; advance buffer pointer
+046C D51CEE          794                     djnz    kount, e2p_x31  ; next byte
+046F                 795             e2p_x33:
+046F C3              796                     clr     c               ; clear error flag
+0470                 797             e2p_x34:
+0470 91DE            798                     call    e2p_stop
+0472                 799             e2p_x35:
+0472 D001            800             pop 01
+0474 D000            801             pop 00
+0476 22              802                     ret
+                     803     ;--------------------------------------------
+0477                 804     e2p_read_current:
+                     805             ; AT24Cxx Current Address Read function.
+                     806             ; Called with programmable address in A. Returns data in A.
+                     807             ; Returns CY set to indicate that the bus is not available
+                     808             ; or that the addressed device failed to acknowledge.
+                     809     
+0477 1204BF          810                     lcall   e2p_start
+047A 4014            811                     jc      e2p_x45         ; abort if bus not available
+                     812     
+047C 23              813                     rl      a               ; programmable address to bits 3:1
+047D 44A0            814                     orl     a, #FADDR       ; add fixed address
+047F D2E0            815                     setb    acc.0           ; specify read operation
+0481 1204EE          816                     lcall   e2p_shout               ; send device address
+0484 4007            817                     jc      e2p_x44         ; abort if no acknowledge
+                     818     
+0486 120522          819                     lcall   e2p_shin                ; receive data byte
+0489 12054B          820                     lcall   e2p_NAK         ; do not acknowledge byte
+048C C3              821                     clr     c               ; clear error flag
+048D                 822             e2p_x44:
+048D 1204DE          823                     lcall   e2p_stop
+0490                 824             e2p_x45:
+0490 22              825                     ret
+                     826     
+                     827     ;----------------------------
+0491                 828     e2p_read_random:
+                     829             ; AT24Cxx Random Read function.
+                     830             ; Called with programmable address in A, byte address in
+                     831             ; register pair ADDR_HI:ADDR_LO. Returns data in A.
+                     832             ; Returns CY set to indicate that the bus is not available
+                     833             ; or that the addressed device failed to acknowledge.
+                     834     
+0491 C0F0            835                     push    b
+0493 F5F0            836                     mov     b, a            ; save copy of programmable address
+                     837     
+                     838                     ; Send dummy write command to set internal address.
+                     839     
+0495 1204BF          840                     lcall   e2p_start
+0498 4022            841                     jc      e2p_x47         ; abort if bus not available
+                     842     
+049A 23              843                     rl      a               ; programmable address to bits 3:1
+049B 44A0            844                     orl     a, #FADDR       ; add fixed address
+049D C2E0            845                     clr     acc.0           ; specify write operation
+049F 1204EE          846                     lcall   e2p_shout               ; send device address
+04A2 4015            847                     jc      e2p_x46         ; abort if no acknowledge
+                     848     
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE    14
+
+04A4 E54C            849                     mov     a, addr_hi      ; send high byte of address
+04A6 1204EE          850                     lcall   e2p_shout               ;
+04A9 400E            851                     jc      e2p_x46         ; abort if no acknowledge
+                     852     
+04AB E54B            853                     mov     a, addr_lo      ; send low byte of address
+04AD 1204EE          854                     lcall   e2p_shout               ;
+04B0 4007            855                     jc      e2p_x46         ; abort if no acknowledge
+                     856     
+                     857                     ; Call Current Address Read function.
+                     858     
+04B2 E5F0            859                     mov     a, b            ; get programmable address
+04B4 120477          860                     lcall   e2p_read_current
+04B7 8003            861                     jmp     e2p_x47         ; exit
+04B9                 862             e2p_x46:
+04B9 1204DE          863                     lcall   e2p_stop
+04BC                 864             e2p_x47:
+04BC D0F0            865                     pop     b
+04BE 22              866                     ret
+                     867     ;----------------------------
+                     868     ;----------------------------
+                     869     
+04BF                 870     e2p_start:
+                     871     
+                     872             ; Send START, defined as high-to-low SDA with SCL high.
+                     873             ; Return with SCL, SDA low.
+                     874             ; Returns CY set if bus is not available.
+                     875     
+04BF D291            876                     setb    e2p_SDA
+04C1 D290            877                     setb    e2p_SCL
+                     878     
+04C3 00              879                     nop                     ; enforce hold delay
+04C4 3090FD          880     e2p_hh_7: jnb e2p_SCL,e2p_hh_7
+                     881                                     ;
+04C7 00              882                     nop                     ;
+04C8 00              883                     nop
+                     884                     ; Verify bus available.
+                     885     
+04C9 309110          886                     jnb     e2p_SDA, e2p_x40        ; jump if not high
+04CC 30900D          887                     jnb     e2p_SCL, e2p_x40        ; jump if not high
+                     888     
+04CF 00              889                     nop                     ; enforce setup delay and cycle delay
+04D0 C291            890                     clr     e2p_SDA
+04D2 00              891                     nop                     ; enforce hold delay
+04D3 00              892                     nop                     ;
+04D4 00              893                     nop                     ;
+04D5 00              894                     nop                     ;
+04D6 00              895                     nop                     ;
+04D7 C290            896                     clr     e2p_SCL
+                     897     
+04D9 C3              898                     clr     c               ; clear error flag
+04DA 8001            899                     jmp     e2p_x41
+04DC                 900             e2p_x40:
+04DC D3              901                     setb    c               ; set error flag
+04DD                 902             e2p_x41:
+04DD 22              903                     ret
+                     904     ;----------------------------
+04DE                 905     e2p_stop:
+                     906     
+                     907             ; Send STOP, defined as low-to-high SDA with SCL high.
+                     908             ; SCL expected low on entry. Return with SCL, SDA high.
+                     909     
+04DE C291            910                     clr     e2p_SDA
+04E0 00              911                     nop                     ; enforce SCL low and data setup
+04E1 00              912                     nop
+04E2 D290            913                     setb    e2p_SCL
+04E4 3090FD          914     e2p_hh_1: jnb e2p_SCL,e2p_hh_1
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE    15
+
+04E7 00              915                     nop                     ; enforce setup delay
+04E8 00              916                     nop                     ;
+04E9 00              917                     nop                     ;
+04EA 00              918                     nop                     ;
+                     919                     ;nop                    ;
+04EB D291            920                     setb    e2p_SDA
+04ED 22              921                     ret
+                     922     ;----------------------------
+04EE                 923     e2p_shout:
+                     924     
+                     925             ; Shift out a byte to the AT24Cxx, most significant bit first.
+                     926             ; SCL, SDA expected low on entry. Return with SCL low.
+                     927             ; Called with data to send in A.
+                     928             ; Returns CY set to indicate failure by slave to acknowledge.
+                     929             ; Destroys A.
+                     930     
+04EE C0F0            931                     push    b
+04F0 75F008          932                     mov     b, #8           ; bit counter
+04F3                 933             e2p_x42:
+04F3 33              934                     rlc     a               ; move bit into CY
+04F4 9291            935                     mov     e2p_SDA, c              ; output bit
+04F6 00              936             nop
+04F7 00              937             nop
+04F8 00              938             nop
+04F9 00              939                     nop                     ; enforce SCL low and data setup
+04FA D290            940                     setb    e2p_SCL         ; raise clock
+04FC 00              941                     nop                     ; enforce SCL high
+04FD 00              942                     nop                     ;
+04FE 00              943                     nop                     ;
+04FF 00              944                     nop                     ;
+0500 3090FD          945     e2p_hh_2: jnb e2p_SCL,e2p_hh_2
+0503 00              946     nop
+0504 00              947     nop
+0505 C290            948                     clr     e2p_SCL         ; drop clock
+0507 D5F0E9          949                     djnz    b, e2p_x42              ; next bit
+                     950     
+050A D291            951                     setb    e2p_SDA         ; release SDA for ACK
+050C 00              952                     nop                     ; enforce SCL low and tAA
+050D 00              953                     nop                     ;
+050E D290            954             setb    e2p_SCL         ; raise ACK clock
+0510 3090FD          955     e2p_hh_3: jnb e2p_SCL,e2p_hh_3
+                     956     
+0513 A291            957                     mov     c, e2p_SDA              ; get ACK bit
+0515 C290            958                     clr     e2p_SCL         ; drop ACK clock
+0517 00              959                     nop                     ; enforce SCL high
+0518 00              960                     nop                     ;
+0519 00              961                     nop                     ;
+051A 00              962                     nop                     ;
+051B 00              963                     nop                     ; enforce SCL high
+051C 00              964                     nop                     ;
+051D 00              965                     nop                     ;
+051E 00              966                     nop                     ;
+                     967     
+051F D0F0            968                     pop     b
+0521 22              969                     ret
+                     970     ;----------------------------
+0522                 971     e2p_shin:
+                     972     
+                     973             ; Shift in a byte from the AT24Cxx, most significant bit first.
+                     974             ; SCL expected low on entry. Return with SCL low.
+                     975             ; Returns received data byte in A.
+                     976     
+0522 D291            977                     setb    e2p_SDA         ; make SDA an input
+                     978     
+0524 C0F0            979                     push    b
+0526 75F008          980                     mov     b, #8           ; bit count
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE    16
+
+0529                 981             e2p_x43:
+0529 00              982                     nop                     ; enforce SCL low and data setup
+052A 00              983                     nop                     ;
+052B 00              984                     nop                     ;
+052C D290            985                     setb    e2p_SCL         ; raise clock
+052E 3090FD          986     e2p_hh_6: jnb e2p_SCL,e2p_hh_6
+                     987     
+                     988     ;               nop                     ; enforce SCL high
+                     989     ;               nop                     ;
+0531 A291            990                     mov     c, e2p_SDA              ; input bit
+0533 33              991                     rlc     a               ; move bit into byte
+0534 C290            992                     clr     e2p_SCL         ; drop clock
+0536 D5F0F0          993                     djnz    b, e2p_x43              ; next bit
+                     994     
+0539 D0F0            995                     pop     b
+053B 22              996                     ret
+                     997     ;----------------------------
+053C                 998     e2p_ACKK:
+                     999     
+                    1000             ; Clock out an acknowledge bit (low).
+                    1001             ; SCL expected low on entry. Return with SCL, SDA low.
+                    1002     
+053C C291           1003                     clr     e2p_SDA         ; ACK bit
+053E 00             1004                     nop                     ; enforce SCL low and data setup
+                    1005     ;               nop                     ;
+053F D290           1006                     setb    e2p_SCL         ; raise clock
+0541 3090FD         1007     e2p_hh_4: jnb e2p_SCL,e2p_hh_4
+                    1008     
+0544 00             1009                     nop                     ; enforce SCL high
+0545 00             1010                     nop                     ;
+0546 00             1011                     nop                     ;
+0547 00             1012                     nop                     ;
+0548 C290           1013                     clr     e2p_SCL         ; drop clock
+054A 22             1014                     ret
+                    1015     ;----------------------------
+054B                1016     e2p_NAK:
+                    1017     
+                    1018             ; Clock out a negative acknowledge bit (high).
+                    1019             ; SCL expected low on entry. Return with SCL low, SDA high.
+                    1020     
+054B D291           1021                     setb    e2p_SDA         ; NAK bit
+054D 00             1022                     nop                     ; enforce SCL low and data setup
+                    1023     ;               nop                     ;
+054E D290           1024                     setb    e2p_SCL         ; raise clock
+0550 3090FD         1025     e2p_hh_5: jnb e2p_SCL,e2p_hh_5
+                    1026     
+0553 00             1027                     nop                     ; enforce SCL high
+0554 00             1028                     nop                     ;
+0555 00             1029                     nop                     ;
+0556 00             1030                     nop                     ;
+0557 C290           1031                     clr     e2p_SCL         ; drop clock
+0559 22             1032                     ret
+                    1033     ;----------------------------
+                    1034     ;----------------------------
+055A                1035     e2p_write_to_e2p:
+055A C0F0           1036     push b
+055C 75F0FF         1037     mov b,#255 ;retry count
+055F                1038     e2p_kyf_3:      
+055F 120599         1039             lcall e2p_write_zdata
+0562 5007           1040             jnc e2p_kyf_2
+0564 D5F0F8         1041             djnz b,e2p_kyf_3
+0567 D0F0           1042     pop b
+0569 21A1           1043     jmp some_error
+056B                1044     e2p_kyf_2:
+056B D0F0           1045     pop b
+056D 22             1046     ret
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE    17
+
+                    1047     ;----------------------------
+                    1048     
+                    1049     ;----------------------------
+056E                1050     e2p_write_byte:
+                    1051             ; AT24Cxx Byte Write function.
+                    1052             ; Called with programmable address in A, byte address in
+                    1053             ; register pair ADDR_HI:ADDR_LO, data in register ZDATA.
+                    1054             ; Does not wait for write cycle to complete.
+                    1055             ; Returns CY set to indicate that the bus is not available
+                    1056             ; or that the addressed device failed to acknowledge.
+                    1057             ; Destroys A.
+                    1058     
+056E 1204BF         1059                     lcall   e2p_start
+0571 4025           1060                     jc      e2p_sx49                ; abort if bus not available
+0573 7400           1061                     mov a ,#PADDR
+0575 23             1062                     rl      a               ; programmable address to bits 3:1
+0576 44A0           1063                     orl     a, #FADDR       ; add fixed address
+0578 C2E0           1064                     clr     acc.0           ; specify write operation
+057A 1204EE         1065                     lcall   e2p_shout               ; send device address
+057D 4016           1066                     jc      e2p_sx48                ; abort if no acknowledge
+                    1067     
+057F E54C           1068                     mov     a, addr_hi      ; send high byte of address
+0581 1204EE         1069                     lcall   e2p_shout               ;
+0584 400F           1070                     jc      e2p_sx48                ; abort if no acknowledge
+                    1071     
+0586 E54B           1072                     mov     a, addr_lo      ; send low byte of address
+0588 1204EE         1073                     lcall   e2p_shout               ;
+058B 4008           1074                     jc      e2p_sx48                ; abort if no acknowledge
+                    1075     
+058D E54F           1076                     mov     a,zdata ; get data
+                    1077                     
+058F 1204EE         1078                     lcall   e2p_shout               ; send data
+0592 4001           1079                     jc      e2p_sx48                ; abort if no acknowledge
+                    1080     
+0594 C3             1081                     clr     c               ; clear error flag
+0595                1082             e2p_sx48:
+0595 1204DE         1083                     lcall   e2p_stop
+0598                1084             e2p_sx49:
+0598 22             1085                     ret
+                    1086     ;----------------------------
+0599                1087     e2p_write_zdata:
+                    1088             ; AT24Cxx Byte Write function.
+                    1089             ; Called with programmable address in A, byte address in
+                    1090             ; register pair ADDR_HI:ADDR_LO, data in register XDATA.
+                    1091             ; Does not wait for write cycle to complete.
+                    1092             ; Returns CY set to indicate that the bus is not available
+                    1093             ; or that the addressed device failed to acknowledge.
+                    1094             ; Destroys A.
+                    1095     
+0599 1204BF         1096                     lcall   e2p_start
+059C 4025           1097                     jc      e2p_mx49                ; abort if bus not available
+059E 7400           1098                     mov a ,#PADDR
+05A0 23             1099                     rl      a               ; programmable address to bits 3:1
+05A1 44A0           1100                     orl     a, #FADDR       ; add fixed address
+05A3 C2E0           1101                     clr     acc.0           ; specify write operation
+05A5 1204EE         1102                     lcall   e2p_shout               ; send device address
+05A8 4016           1103                     jc      e2p_mx48                ; abort if no acknowledge
+                    1104     
+05AA E54C           1105                     mov     a, addr_hi      ; send high byte of address
+05AC 1204EE         1106                     lcall   e2p_shout               ;
+05AF 400F           1107                     jc      e2p_mx48                ; abort if no acknowledge
+                    1108     
+05B1 E54B           1109                     mov     a, addr_lo      ; send low byte of address
+05B3 1204EE         1110                     lcall   e2p_shout               ;
+05B6 4008           1111                     jc      e2p_mx48                ; abort if no acknowledge
+                    1112     
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE    18
+
+05B8 E54F           1113                     mov     a,zdata ; get data
+05BA 1204EE         1114                     lcall   e2p_shout               ; send data
+05BD 4001           1115                     jc      e2p_mx48                ; abort if no acknowledge
+                    1116     
+05BF C3             1117                     clr     c               ; clear error flag
+05C0                1118             e2p_mx48:
+05C0 1204DE         1119                     lcall   e2p_stop
+05C3                1120             e2p_mx49:
+05C3 22             1121                     ret
+                    1122     ;-------------------------------------
+                    1123     ;----------------------------
+                    1124     ;---------------------------------------------------------------
+05C4                1125     e2p_save_to_e2p:
+                    1126     
+05C4 C0F0           1127     push b
+05C6                1128     e2p_kf_1:
+05C6 75F0FF         1129             mov b,#255 ;retry count
+05C9                1130     e2p_kf_3:       
+05C9 12056E         1131             lcall e2p_write_byte
+05CC 5007           1132             jnc e2p_kf_2
+05CE D5F0F8         1133             djnz b,e2p_kf_3
+05D1 D0F0           1134     pop b
+05D3 21A1           1135     jmp some_error
+05D5                1136     e2p_kf_2:
+05D5 D0F0           1137     pop b
+05D7 22             1138     ret
+                    1139     
+                    1140     ;----------------------------
+05D8                1141     inc_e2p_counter:
+05D8 C082           1142             push dpl
+05DA C083           1143             push dph
+05DC 854B82         1144             mov dpl,addr_lo
+05DF 854C83         1145             mov dph,addr_hi
+05E2 A3             1146             inc dptr
+05E3 85834C         1147             mov addr_hi,dph
+05E6 85824B         1148             mov addr_lo,dpl
+05E9 D083           1149             pop dph
+05EB D082           1150             pop dpl
+05ED 22             1151     ret
+                    1152     ;----------------------------
+                    1153     
+                    1154     END
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE    19
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+ADDR_HI. . . . . .  D ADDR   004CH   A   
+ADDR_LO. . . . . .  D ADDR   004BH   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+BLINK_DOUBLE . . .  C ADDR   01A5H   A   
+BLINK_LED1 . . . .  C ADDR   0104H   A   
+BLINK_LED2 . . . .  C ADDR   0195H   A   
+CARD_ACKK. . . . .  C ADDR   0330H   A   
+CARD_HH_1. . . . .  C ADDR   02D8H   A   
+CARD_HH_2. . . . .  C ADDR   02F4H   A   
+CARD_HH_3. . . . .  C ADDR   0304H   A   
+CARD_HH_4. . . . .  C ADDR   0335H   A   
+CARD_HH_5. . . . .  C ADDR   0344H   A   
+CARD_HH_6. . . . .  C ADDR   0322H   A   
+CARD_HH_7. . . . .  C ADDR   02B8H   A   
+CARD_IN. . . . . .  B ADDR   0090H.6 A   
+CARD_KF_1. . . . .  C ADDR   03BAH   A   
+CARD_KF_2. . . . .  C ADDR   03C9H   A   
+CARD_KF_3. . . . .  C ADDR   03BDH   A   
+CARD_KYF_2 . . . .  C ADDR   035FH   A   
+CARD_KYF_3 . . . .  C ADDR   0353H   A   
+CARD_MX48. . . . .  C ADDR   03B4H   A   
+CARD_MX49. . . . .  C ADDR   03B7H   A   
+CARD_NAK . . . . .  C ADDR   033FH   A   
+CARD_READ_BLOCK. .  C ADDR   0225H   A   
+CARD_READ_CURRENT.  C ADDR   026BH   A   
+CARD_READ_E2P_BYTE  C ADDR   01C0H   A   
+CARD_READ_PAGE . .  C ADDR   0218H   A   
+CARD_READ_RANDOM .  C ADDR   0285H   A   
+CARD_SAVE_TO_E2P .  C ADDR   03B8H   A   
+CARD_SCL . . . . .  B ADDR   0090H.2 A   
+CARD_SDA . . . . .  B ADDR   0090H.3 A   
+CARD_SHIN. . . . .  C ADDR   0316H   A   
+CARD_SHOUT . . . .  C ADDR   02E2H   A   
+CARD_START . . . .  C ADDR   02B3H   A   
+CARD_STOP. . . . .  C ADDR   02D2H   A   
+CARD_SX48. . . . .  C ADDR   0389H   A   
+CARD_SX49. . . . .  C ADDR   038CH   A   
+CARD_WRITE_BLOCK .  C ADDR   01D4H   A   
+CARD_WRITE_BYTE. .  C ADDR   0362H   A   
+CARD_WRITE_PAGE. .  C ADDR   020EH   A   
+CARD_WRITE_TO_E2P.  C ADDR   034EH   A   
+CARD_WRITE_ZDATA .  C ADDR   038DH   A   
+CARD_X31 . . . . .  C ADDR   0251H   A   
+CARD_X32 . . . . .  C ADDR   025DH   A   
+CARD_X33 . . . . .  C ADDR   0263H   A   
+CARD_X34 . . . . .  C ADDR   0264H   A   
+CARD_X35 . . . . .  C ADDR   0266H   A   
+CARD_X36 . . . . .  C ADDR   01FBH   A   
+CARD_X37 . . . . .  C ADDR   0206H   A   
+CARD_X38 . . . . .  C ADDR   0209H   A   
+CARD_X40 . . . . .  C ADDR   02D0H   A   
+CARD_X41 . . . . .  C ADDR   02D1H   A   
+CARD_X42 . . . . .  C ADDR   02E7H   A   
+CARD_X43 . . . . .  C ADDR   031DH   A   
+CARD_X44 . . . . .  C ADDR   0281H   A   
+CARD_X45 . . . . .  C ADDR   0284H   A   
+CARD_X46 . . . . .  C ADDR   02ADH   A   
+CARD_X47 . . . . .  C ADDR   02B0H   A   
+CARD_X63 . . . . .  C ADDR   020EH   A   
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE    20
+
+CARD_X64 . . . . .  C ADDR   0217H   A   
+CARD_X72 . . . . .  C ADDR   021BH   A   
+CARD_X74 . . . . .  C ADDR   0224H   A   
+CARD_ZEWD_1. . . .  C ADDR   01C4H   A   
+CARD_ZEWD_3. . . .  C ADDR   01D1H   A   
+DPH. . . . . . . .  D ADDR   0083H   A   
+DPL. . . . . . . .  D ADDR   0082H   A   
+DP_H . . . . . . .  D ADDR   004DH   A   
+DP_L . . . . . . .  D ADDR   004EH   A   
+DSR. . . . . . . .  B ADDR   00B0H.4 A   
+DTR. . . . . . . .  B ADDR   00B0H.5 A   
+E2P_ACKK . . . . .  C ADDR   053CH   A   
+E2P_HH_1 . . . . .  C ADDR   04E4H   A   
+E2P_HH_2 . . . . .  C ADDR   0500H   A   
+E2P_HH_3 . . . . .  C ADDR   0510H   A   
+E2P_HH_4 . . . . .  C ADDR   0541H   A   
+E2P_HH_5 . . . . .  C ADDR   0550H   A   
+E2P_HH_6 . . . . .  C ADDR   052EH   A   
+E2P_HH_7 . . . . .  C ADDR   04C4H   A   
+E2P_KF_1 . . . . .  C ADDR   05C6H   A   
+E2P_KF_2 . . . . .  C ADDR   05D5H   A   
+E2P_KF_3 . . . . .  C ADDR   05C9H   A   
+E2P_KYF_2. . . . .  C ADDR   056BH   A   
+E2P_KYF_3. . . . .  C ADDR   055FH   A   
+E2P_MX48 . . . . .  C ADDR   05C0H   A   
+E2P_MX49 . . . . .  C ADDR   05C3H   A   
+E2P_NAK. . . . . .  C ADDR   054BH   A   
+E2P_READ_BLOCK . .  C ADDR   0431H   A   
+E2P_READ_CURRENT .  C ADDR   0477H   A   
+E2P_READ_E2P_BYTE.  C ADDR   03CCH   A   
+E2P_READ_PAGE. . .  C ADDR   0424H   A   
+E2P_READ_RANDOM. .  C ADDR   0491H   A   
+E2P_SAVE_TO_E2P. .  C ADDR   05C4H   A   
+E2P_SCL. . . . . .  B ADDR   0090H.0 A   
+E2P_SDA. . . . . .  B ADDR   0090H.1 A   
+E2P_SHIN . . . . .  C ADDR   0522H   A   
+E2P_SHOUT. . . . .  C ADDR   04EEH   A   
+E2P_START. . . . .  C ADDR   04BFH   A   
+E2P_STOP . . . . .  C ADDR   04DEH   A   
+E2P_SX48 . . . . .  C ADDR   0595H   A   
+E2P_SX49 . . . . .  C ADDR   0598H   A   
+E2P_WRITE_BLOCK. .  C ADDR   03E0H   A   
+E2P_WRITE_BYTE . .  C ADDR   056EH   A   
+E2P_WRITE_PAGE . .  C ADDR   041AH   A   
+E2P_WRITE_TO_E2P .  C ADDR   055AH   A   
+E2P_WRITE_ZDATA. .  C ADDR   0599H   A   
+E2P_X31. . . . . .  C ADDR   045DH   A   
+E2P_X32. . . . . .  C ADDR   0469H   A   
+E2P_X33. . . . . .  C ADDR   046FH   A   
+E2P_X34. . . . . .  C ADDR   0470H   A   
+E2P_X35. . . . . .  C ADDR   0472H   A   
+E2P_X36. . . . . .  C ADDR   0407H   A   
+E2P_X37. . . . . .  C ADDR   0412H   A   
+E2P_X38. . . . . .  C ADDR   0415H   A   
+E2P_X40. . . . . .  C ADDR   04DCH   A   
+E2P_X41. . . . . .  C ADDR   04DDH   A   
+E2P_X42. . . . . .  C ADDR   04F3H   A   
+E2P_X43. . . . . .  C ADDR   0529H   A   
+E2P_X44. . . . . .  C ADDR   048DH   A   
+E2P_X45. . . . . .  C ADDR   0490H   A   
+E2P_X46. . . . . .  C ADDR   04B9H   A   
+E2P_X47. . . . . .  C ADDR   04BCH   A   
+E2P_X63. . . . . .  C ADDR   041AH   A   
+E2P_X64. . . . . .  C ADDR   0423H   A   
+E2P_X72. . . . . .  C ADDR   0427H   A   
+E2P_X74. . . . . .  C ADDR   0430H   A   
+A51 MACRO ASSEMBLER  TEL                                                                  12/29/2009 13:29:51 PAGE    21
+
+E2P_ZEWD_1 . . . .  C ADDR   03D0H   A   
+E2P_ZEWD_3 . . . .  C ADDR   03DDH   A   
+FADDR. . . . . . .  N NUMB   00A0H   A   
+INC_E2P_COUNTER. .  C ADDR   05D8H   A   
+INDEX. . . . . . .    REG    R0          
+KOUNT. . . . . . .  D ADDR   001CH   A   
+LED1 . . . . . . .  B ADDR   0090H.4 A   
+LED2 . . . . . . .  B ADDR   0090H.5 A   
+LONG1. . . . . . .  C ADDR   01B5H   A   
+LONG2. . . . . . .  C ADDR   01B3H   A   
+LONG_DELAY . . . .  C ADDR   01B1H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+PADDR. . . . . . .  N NUMB   0000H   A   
+READ_NEXT_BYTE . .  C ADDR   0119H   A   
+SOME_ERROR . . . .  C ADDR   01A1H   A   
+TEMP . . . . . . .  D ADDR   0045H   A   
+ZDATA. . . . . . .  D ADDR   004FH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

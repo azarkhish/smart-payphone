@@ -1,0 +1,12 @@
+
+2010/02/01 11:00:02 È.Ù
+Start Time: 10:58:26 È.Ù
+Channel 4
+RING
+CONNECTED
+Handshake complete
+Start of report
+ *  *  *  *  *  * 
+End of report
+
+________________________________

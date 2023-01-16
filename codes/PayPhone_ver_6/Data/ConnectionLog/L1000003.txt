@@ -1,0 +1,28 @@
+
+2010/02/03 12:26:17 Þ.Ù
+Start Time: 12:24:39 Þ.Ù
+Channel 1
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 3
+
+________________________________
+
+2010/02/03 12:44:55 Þ.Ù
+Start Time: 12:43:23 Þ.Ù
+Channel 2
+RING
+CONNECTED
+Handshake complete
+Start of report
+Payphone ID: 3
+ *  *  *  *  *  * 
+End of report
+Start of update
+Setting Updated
+Synchronized
+End of update
+
+________________________________

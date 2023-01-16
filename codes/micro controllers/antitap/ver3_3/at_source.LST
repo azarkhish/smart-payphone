@@ -1,0 +1,40 @@
+C51 COMPILER V7.20   AT_SOURCE                                                             07/20/2009 18:07:06 PAGE 1   
+
+
+C51 COMPILER V7.20, COMPILATION OF MODULE AT_SOURCE
+OBJECT MODULE PLACED IN at_source.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE at_source.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          
+   3          #include<reg51.h>
+   4                                            // initialize counter to 0
+   5          
+   6          void delay(){
+   7   1      nop();
+*** WARNING C206 IN LINE 7 OF AT_SOURCE.C: 'nop': missing function-prototype
+   8   1      nop();
+   9   1      nop();
+  10   1      nop();
+  11   1      nop();
+  12   1      nop();
+  13   1      }                      
+  14          
+  15          void main()
+  16            {
+  17   1               P3=0x00;                   // clear op
+  18   1             
+  19   1              while(1){
+  20   2                      P3_2=1;
+*** ERROR C202 IN LINE 20 OF AT_SOURCE.C: 'P3_2': undefined identifier
+  21   2                      delay();
+  22   2                      P3_2=0;
+*** ERROR C202 IN LINE 22 OF AT_SOURCE.C: 'P3_2': undefined identifier
+  23   2                      delay();}                   // continuous loop
+  24   1         }
+  25          
+  26          
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  2 ERROR(S)
